@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SpeedTest</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_scatter_plot">Scatter Plot</string>
+    <string name="drawplot">Lancer le test</string>
+    <string name="test">Speed Test</string>
+    <string name="viewTable">Tableau des valeurs</string>
+    <string name="viewPlot">Scatter Plot</string>
+    <string name="title_activity_table_view">Valeurs</string>
+    <string name="file_size">Taille du fichier (kb)</string>
+    <string name="upload_speed">Vitesse d'upload (kb/sec)</string>
+    <string name="download_speed">Vitesse de download (kb/sec)</string>
+
+</resources>
