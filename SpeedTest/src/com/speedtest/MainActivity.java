@@ -1,39 +1,108 @@
 package com.speedtest;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
+
+import com.google.android.gms.maps.model.LatLng;
+import com.speedtest.services.CheckSpeedService;
+import com.speedtest.services.LocationService;
 
 public class MainActivity extends Activity {
+
+	private BroadcastReceiver broadcastReceiver;
+	private BroadcastReceiver locationChange;
+	private LatLng latLng = new LatLng(0,0);
+
+	private ProgressDialog dialog;
+	public static String[] files = new String[] {"lighthouse.jpg", "hydrangeas.jpg", "tulips.jpg","jellyfish.jpg", "koala.jpg"};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		broadcastReceiver = new BroadcastReceiver() {
+			@Override
+			public void onReceive(Context context, Intent intent) {
+				if(intent.getAction().equals(CheckSpeedService.BROADCAST_COMPLETE_CHECK_SPEED)) {
+					dialog.dismiss();
+				} else if(intent.getAction().equals(CheckSpeedService.BROADCAST_DOWNLOAD_TASK)) {
+					int task = intent.getIntExtra(CheckSpeedService.COMPLETE_SIMPLE_TASK, 0);
+					if(task > 0)
+						dialog.setMessage("Checking download speed..." + (100 / files.length * task) + "%");
+				} else if(intent.getAction().equals(CheckSpeedService.BROADCAST_UPLOAD_TASK)) {
+					int task = intent.getIntExtra(CheckSpeedService.COMPLETE_SIMPLE_TASK, 0);
+					if(task > 0)
+						dialog.setMessage("Checking upload speed..." + (100 / files.length * task) + "%");
+					else
+						dialog.setMessage("Checking upload speed...  0%");
+				}
+			}
+		};
+
+		locationChange = new BroadcastReceiver() {
+			@Override
+			public void onReceive(Context context, Intent intent) {
+				latLng = new LatLng(intent.getFloatExtra("latitude",0),intent.getFloatExtra("longitude",0));
+			}
+		};
+
+
 	}
+
+	@Override
+	public void onStart() {
+		super.onStart();
+		IntentFilter Complete = new IntentFilter(CheckSpeedService.BROADCAST_COMPLETE_CHECK_SPEED);
+		IntentFilter Download = new IntentFilter(CheckSpeedService.BROADCAST_DOWNLOAD_TASK);
+		IntentFilter Upload = new IntentFilter(CheckSpeedService.BROADCAST_UPLOAD_TASK);
+
+		registerReceiver(broadcastReceiver, Complete);
+		registerReceiver(broadcastReceiver, Download);
+		registerReceiver(broadcastReceiver, Upload);
+
+		// Start Location service
+		startService(new Intent(getApplicationContext(), LocationService.class));
+		IntentFilter intentFilter = new IntentFilter(LocationService.LOCATION_CHANGE_BROADCAST_RECEIVER);
+		registerReceiver(locationChange, intentFilter);
+
+		Log.i("info"," LOCATION : " + latLng.toString());
+	}
+
+	@Override
+	public void onStop() {
+		super.onStop();
+		if(broadcastReceiver != null)
+			unregisterReceiver(broadcastReceiver);
+
+		// Stop Location service
+		stopService(new Intent(getApplicationContext(),LocationService.class));
+		unregisterReceiver(locationChange);
+	}
+
+
 	
 	public void drawPlot(View v) {
-		final Activity activity = this;
+		Intent intent = new Intent(this, CheckSpeedService.class);
+		intent.putExtra(CheckSpeedService.REPEAT, 5);
+		intent.putExtra(CheckSpeedService.FILES,files);
+		intent.putExtra("latitude",(float)latLng.latitude);
+		intent.putExtra("longitude",(float)latLng.longitude);
 
+		startService(intent);
+
+		dialog = new ProgressDialog(this);
+		dialog.setMessage("Checking download speed...0%");
+		dialog.show();
+
+		/*final Activity activity = this;
 		final ProgressDialog dialog = new ProgressDialog(this);
 		dialog.setMessage("Checking download speed...0%");
 		dialog.setMax(10);
@@ -44,21 +113,21 @@ public class MainActivity extends Activity {
 				activity.runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						dialog.setMessage("Download...20%");
+						dialog.setMessage("Checking download speed...20%");
 					}
 				});
 				float down2 = downloadFile("hydrangeas.jpg");
 				activity.runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						dialog.setMessage("Download...40%");
+						dialog.setMessage("Checking download speed...40%");
 					}
 				});
 				float down3 = downloadFile("lighthouse.jpg");
 				activity.runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						dialog.setMessage("Download...60%");
+						dialog.setMessage("Checking download speed...60%");
 					}
 				});
 				float down4 = downloadFile("jellyfish.jpg");
@@ -72,37 +141,37 @@ public class MainActivity extends Activity {
 				activity.runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						dialog.setMessage("Upload...0%");
-						Toast.makeText(activity, "Download terminé", Toast.LENGTH_SHORT).show();
+						dialog.setMessage("Checking uploading speed...0%");
+						Toast.makeText(activity, "Downloading Process has been completed.", Toast.LENGTH_SHORT).show();
 					}
 				});
-				
+
 				float up1 = uploadFile("tulips.jpg");
 				activity.runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						dialog.setMessage("Upload...20%");
+						dialog.setMessage("Checking uploading speed...20%");
 					}
 				});
 				float up2 = uploadFile("hydrangeas.jpg");
 				activity.runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						dialog.setMessage("Upload...40%");
+						dialog.setMessage("Checking uploading speed...40%");
 					}
 				});
 				float up3 = uploadFile("lighthouse.jpg");
 				activity.runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						dialog.setMessage("Upload...60%");
+						dialog.setMessage("Checking uploading speed...60%");
 					}
 				});
 				float up4 = uploadFile("jellyfish.jpg");
 				activity.runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						dialog.setMessage("Upload...80%");
+						dialog.setMessage("Checking uploading speed...80%");
 					}
 				});
 				float up5 = uploadFile("koala.jpg");
@@ -110,8 +179,8 @@ public class MainActivity extends Activity {
 					@Override
 					public void run() {
 						dialog.dismiss();
-						Toast.makeText(activity, "Upload terminé", Toast.LENGTH_SHORT).show();
-						Toast.makeText(activity, "Accès aux résultats", Toast.LENGTH_SHORT).show();
+						Toast.makeText(activity, "Uploading Process has been completed.", Toast.LENGTH_SHORT).show();
+						Toast.makeText(activity, "Now you can view the recent test results..", Toast.LENGTH_SHORT).show();
 					}
 				});
 				
@@ -159,9 +228,13 @@ public class MainActivity extends Activity {
 				editor.putFloat("size5", size5);
 				editor.commit();
 			}
-		}).start();
+		}).start();*/
 	}
-	
+
+	public void viewPlotCandle(View v) {
+		Intent i = new Intent(this, CandleStickChartActivity.class);
+		startActivity(i);
+	}
 	public void viewPlot(View v) {
 		Intent i = new Intent(this, ScatterPlot.class);
 		startActivity(i);
@@ -172,7 +245,7 @@ public class MainActivity extends Activity {
 		startActivity(i);
 	}
 
-	public float downloadFile(String fileName) {
+	/*public float downloadFile(String fileName) {
 		final String upLoadServerUri = "http://topcity-1.com/test/testing/uploads/";
 		float dataRate = 0;
 		try {
@@ -224,9 +297,9 @@ public class MainActivity extends Activity {
 			FileInputStream fileInputStream = new FileInputStream(sourceFile);
 			URL url = new URL(upLoadServerUri);
 			conn = (HttpURLConnection) url.openConnection();
-			conn.setDoInput(true); 
-			conn.setDoOutput(true); 
-			conn.setUseCaches(false);
+			conn.setDoInput(true); // Allow Inputs
+			conn.setDoOutput(true); // Allow Outputs
+			conn.setUseCaches(false); // Don't use a Cached Copy
 			conn.setRequestMethod("POST");
 			conn.setRequestProperty("Connection", "Keep-Alive");
 			conn.setRequestProperty("ENCTYPE", "multipart/form-data");
@@ -240,12 +313,13 @@ public class MainActivity extends Activity {
 
 			dos.writeBytes(lineEnd);
 
-
+			// create a buffer of  maximum size
 			bytesAvailable = fileInputStream.available();
 
 			bufferSize = Math.min(bytesAvailable, maxBufferSize);
 			buffer = new byte[bufferSize];
 
+			// read file and write it into form...
 			bytesRead = fileInputStream.read(buffer, 0, bufferSize);
 
 			long startTime = System.currentTimeMillis();
@@ -256,9 +330,11 @@ public class MainActivity extends Activity {
 				bytesRead = fileInputStream.read(buffer, 0, bufferSize);
 			}
 
+			// send multipart form data necesssary after file data...
 			dos.writeBytes(lineEnd);
 			dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
 
+			// Responses from the server (code and message)
 			int serverResponseCode = conn.getResponseCode();
 			String serverResponseMessage = conn.getResponseMessage();
 
@@ -272,7 +348,7 @@ public class MainActivity extends Activity {
 					s = br.readLine();
 				};
 			}
-
+			//close the streams //
 			fileInputStream.close();
 			dos.flush();
 			dos.close();
@@ -283,6 +359,5 @@ public class MainActivity extends Activity {
 			Log.i("test", "Exception : " + e.getMessage());
 		}
 		return dataRate;
-	}
-
+	}*/
 }
