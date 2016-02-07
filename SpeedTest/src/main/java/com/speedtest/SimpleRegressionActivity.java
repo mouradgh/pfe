@@ -20,7 +20,7 @@ import org.apache.commons.math3.stat.regression.SimpleRegression;
 import java.util.List;
 
 /**
- * Created by Admin on 2/3/16.
+ * Github test
  */
 public class SimpleRegressionActivity extends Activity {
 
