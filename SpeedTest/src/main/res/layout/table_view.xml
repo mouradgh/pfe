@@ -1,0 +1,159 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="5dp"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+        
+        <TextView
+            android:id="@+id/r1c1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/file_size" />
+        
+        <TextView
+            android:id="@+id/r1c2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/upload_speed" />
+        
+        <TextView
+            android:id="@+id/r1c3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/download_speed" />
+            
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+        
+	    <TextView
+            android:id="@+id/r2c1"
+            android:layout_width="0dp"
+        	android:layout_weight="1"
+        	android:layout_height="wrap_content" />
+        
+        <TextView
+            android:id="@+id/r2c2"
+            android:layout_width="0dp"
+        	android:layout_weight="1"
+        	android:layout_height="wrap_content" />
+        
+        <TextView
+            android:id="@+id/r2c3"
+            android:layout_width="0dp"
+        	android:layout_weight="1"
+        	android:layout_height="wrap_content" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+        
+        <TextView
+            android:id="@+id/r3c1"
+            android:layout_width="0dp"
+        	android:layout_weight="1"
+        	android:layout_height="wrap_content" />
+        
+        <TextView
+            android:id="@+id/r3c2"
+            android:layout_width="0dp"
+        	android:layout_weight="1"
+        	android:layout_height="wrap_content" />
+        
+        <TextView
+            android:id="@+id/r3c3"
+            android:layout_width="0dp"
+        	android:layout_weight="1"
+        	android:layout_height="wrap_content" />
+            
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+        
+	    <TextView
+            android:id="@+id/r4c1"
+            android:layout_width="0dp"
+        	android:layout_weight="1"
+        	android:layout_height="wrap_content" />
+        
+        <TextView
+            android:id="@+id/r4c2"
+            android:layout_width="0dp"
+        	android:layout_weight="1"
+        	android:layout_height="wrap_content" />
+        
+        <TextView
+            android:id="@+id/r4c3"
+            android:layout_width="0dp"
+        	android:layout_weight="1"
+        	android:layout_height="wrap_content" />
+            
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+            
+        <TextView
+            android:id="@+id/r5c1"
+            android:layout_width="0dp"
+        	android:layout_weight="1"
+        	android:layout_height="wrap_content" />
+        
+        <TextView
+            android:id="@+id/r5c2"
+            android:layout_width="0dp"
+        	android:layout_weight="1"
+        	android:layout_height="wrap_content" />
+        
+        <TextView
+            android:id="@+id/r5c3"
+            android:layout_width="0dp"
+        	android:layout_weight="1"
+        	android:layout_height="wrap_content" />
+            
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+            
+        <TextView
+            android:id="@+id/r6c1"
+            android:layout_width="0dp"
+        	android:layout_weight="1"
+        	android:layout_height="wrap_content" />
+        
+        <TextView
+            android:id="@+id/r6c2"
+            android:layout_width="0dp"
+        	android:layout_weight="1"
+        	android:layout_height="wrap_content" />
+        
+        <TextView
+            android:id="@+id/r6c3"
+            android:layout_width="0dp"
+        	android:layout_weight="1"
+        	android:layout_height="wrap_content" />
+            
+    </TableRow>
+
+</TableLayout>
