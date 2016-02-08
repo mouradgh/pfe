@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\res\\merged\\debug\\layout\\table_view.xml",
+        "source": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\src\\main\\res\\layout\\table_view.xml"
+    },
+    {
+        "merged": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\res\\merged\\debug\\layout\\simple_regression.xml",
+        "source": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\src\\main\\res\\layout\\simple_regression.xml"
+    },
+    {
+        "merged": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\res\\merged\\debug\\layout\\scatter_plot.xml",
+        "source": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\src\\main\\res\\layout\\scatter_plot.xml"
+    },
+    {
+        "merged": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\res\\merged\\debug\\layout\\candlechart_layout.xml",
+        "source": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\src\\main\\res\\layout\\candlechart_layout.xml"
+    }
+]
