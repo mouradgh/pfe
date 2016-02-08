@@ -12,3 +12,6 @@ android:
 script:
     - gradle build connectedCheck
     - ./gradlew build connectedCheck
+
+after_success:
+- ./gradlew cobertura coveralls
