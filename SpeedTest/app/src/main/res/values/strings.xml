@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SpeedTest</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_scatter_plot">Scatter Plot</string>
+    <string name="drawplot">Test My Speed</string>
+    <string name="test">Speed Test</string>
+    <string name="viewTable">Recent Tabular View</string>
+    <string name="viewPlot">View Recent Scatter Plot</string>
+    <string name="title_activity_table_view">Tabular View</string>
+    <string name="file_size">File Size</string>
+    <string name="upload_speed">Upload Speed</string>
+    <string name="download_speed">Download Speed</string>
+
+</resources>
