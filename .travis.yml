@@ -14,4 +14,4 @@ android:
 
 script:
     - gradle build connectedCheck
-    - ./gradlew build connectedCheck
+
