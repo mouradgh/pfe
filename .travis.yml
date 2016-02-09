@@ -17,5 +17,3 @@ before_install:
 script:
     - ./gradlew build connectedCheck
 
-after_success:
-- ./gradlew cobertura coveralls
