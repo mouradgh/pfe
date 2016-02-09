@@ -1,0 +1,13 @@
+language: android
+jdk: jdk1.8.0_60
+
+android:
+  components:
+    # The BuildTools version used by your project
+    - build-tools-19.0.1
+
+    # The SDK version used to compile your project
+    - android-23
+
+script:
+    - gradle build connectedCheck
