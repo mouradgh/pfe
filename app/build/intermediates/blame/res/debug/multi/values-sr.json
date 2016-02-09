@@ -1,23 +1,23 @@
 [
     {
-        "outputFile": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\res\\merged\\debug\\values-sr\\values-sr.xml",
+        "outputFile": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\res\\merged\\debug\\values-sr\\values-sr.xml",
         "map": [
             {
                 "to": {
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 105,
-                    "endColumn": 263,
-                    "endOffset": 364
+                    "endColumn": 108,
+                    "endOffset": 209
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
                     "position": {
-                        "startLine": 24,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 3466,
-                        "endColumn": 267,
-                        "endOffset": 3729
+                        "startOffset": 291,
+                        "endColumn": 108,
+                        "endOffset": 395
                     }
                 }
             },
@@ -25,18 +25,18 @@
                 "to": {
                     "startLine": 3,
                     "startColumn": 4,
-                    "startOffset": 369,
-                    "endColumn": 126,
-                    "endOffset": 491
+                    "startOffset": 214,
+                    "endColumn": 102,
+                    "endOffset": 312
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 1327,
-                        "endColumn": 126,
-                        "endOffset": 1449
+                        "startOffset": 400,
+                        "endColumn": 102,
+                        "endOffset": 498
                     }
                 }
             },
@@ -44,18 +44,18 @@
                 "to": {
                     "startLine": 4,
                     "startColumn": 4,
-                    "startOffset": 496,
-                    "endColumn": 187,
-                    "endOffset": 679
+                    "startOffset": 317,
+                    "endColumn": 105,
+                    "endOffset": 418
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
                     "position": {
-                        "startLine": 9,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 1135,
-                        "endColumn": 191,
-                        "endOffset": 1322
+                        "startOffset": 503,
+                        "endColumn": 105,
+                        "endOffset": 604
                     }
                 }
             },
@@ -63,18 +63,18 @@
                 "to": {
                     "startLine": 5,
                     "startColumn": 4,
-                    "startOffset": 684,
-                    "endColumn": 127,
-                    "endOffset": 807
+                    "startOffset": 423,
+                    "endColumn": 85,
+                    "endOffset": 504
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
                     "position": {
-                        "startLine": 8,
+                        "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 1007,
-                        "endColumn": 127,
-                        "endOffset": 1130
+                        "startOffset": 609,
+                        "endColumn": 85,
+                        "endOffset": 690
                     }
                 }
             },
@@ -82,18 +82,18 @@
                 "to": {
                     "startLine": 6,
                     "startColumn": 4,
-                    "startOffset": 812,
-                    "endColumn": 127,
-                    "endOffset": 935
+                    "startOffset": 509,
+                    "endColumn": 103,
+                    "endOffset": 608
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 879,
-                        "endColumn": 127,
-                        "endOffset": 1002
+                        "startOffset": 695,
+                        "endColumn": 103,
+                        "endOffset": 794
                     }
                 }
             },
@@ -101,18 +101,18 @@
                 "to": {
                     "startLine": 7,
                     "startColumn": 4,
-                    "startOffset": 940,
-                    "endColumn": 219,
-                    "endOffset": 1155
+                    "startOffset": 613,
+                    "endColumn": 117,
+                    "endOffset": 726
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
                     "position": {
-                        "startLine": 5,
+                        "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 431,
-                        "endColumn": 223,
-                        "endOffset": 650
+                        "startOffset": 799,
+                        "endColumn": 117,
+                        "endOffset": 912
                     }
                 }
             },
@@ -120,18 +120,18 @@
                 "to": {
                     "startLine": 8,
                     "startColumn": 4,
-                    "startOffset": 1160,
-                    "endColumn": 219,
-                    "endOffset": 1375
+                    "startOffset": 731,
+                    "endColumn": 104,
+                    "endOffset": 831
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
                     "position": {
-                        "startLine": 6,
+                        "startLine": 10,
                         "startColumn": 4,
-                        "startOffset": 655,
-                        "endColumn": 223,
-                        "endOffset": 874
+                        "startOffset": 917,
+                        "endColumn": 104,
+                        "endOffset": 1017
                     }
                 }
             },
@@ -139,18 +139,18 @@
                 "to": {
                     "startLine": 9,
                     "startColumn": 4,
-                    "startOffset": 1380,
-                    "endColumn": 128,
-                    "endOffset": 1504
+                    "startOffset": 836,
+                    "endColumn": 107,
+                    "endOffset": 939
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
                     "position": {
-                        "startLine": 4,
+                        "startLine": 11,
                         "startColumn": 4,
-                        "startOffset": 302,
-                        "endColumn": 128,
-                        "endOffset": 426
+                        "startOffset": 1022,
+                        "endColumn": 107,
+                        "endOffset": 1125
                     }
                 }
             },
@@ -158,18 +158,18 @@
                 "to": {
                     "startLine": 10,
                     "startColumn": 4,
-                    "startOffset": 1509,
-                    "endColumn": 177,
-                    "endOffset": 1682
+                    "startOffset": 944,
+                    "endColumn": 100,
+                    "endOffset": 1040
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
                     "position": {
-                        "startLine": 19,
+                        "startLine": 12,
                         "startColumn": 4,
-                        "startOffset": 2717,
-                        "endColumn": 177,
-                        "endOffset": 2890
+                        "startOffset": 1130,
+                        "endColumn": 100,
+                        "endOffset": 1226
                     }
                 }
             },
@@ -177,18 +177,18 @@
                 "to": {
                     "startLine": 11,
                     "startColumn": 4,
-                    "startOffset": 1687,
-                    "endColumn": 119,
-                    "endOffset": 1802
+                    "startOffset": 1045,
+                    "endColumn": 103,
+                    "endOffset": 1144
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
                     "position": {
-                        "startLine": 18,
+                        "startLine": 13,
                         "startColumn": 4,
-                        "startOffset": 2597,
-                        "endColumn": 119,
-                        "endOffset": 2712
+                        "startOffset": 1231,
+                        "endColumn": 103,
+                        "endOffset": 1330
                     }
                 }
             },
@@ -196,18 +196,18 @@
                 "to": {
                     "startLine": 12,
                     "startColumn": 4,
-                    "startOffset": 1807,
-                    "endColumn": 179,
-                    "endOffset": 1982
+                    "startOffset": 1149,
+                    "endColumn": 107,
+                    "endOffset": 1252
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
                     "position": {
-                        "startLine": 17,
+                        "startLine": 14,
                         "startColumn": 4,
-                        "startOffset": 2417,
-                        "endColumn": 179,
-                        "endOffset": 2592
+                        "startOffset": 1335,
+                        "endColumn": 107,
+                        "endOffset": 1438
                     }
                 }
             },
@@ -215,18 +215,18 @@
                 "to": {
                     "startLine": 13,
                     "startColumn": 4,
-                    "startOffset": 1987,
-                    "endColumn": 121,
-                    "endOffset": 2104
+                    "startOffset": 1257,
+                    "endColumn": 100,
+                    "endOffset": 1353
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
                     "position": {
-                        "startLine": 16,
+                        "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 2295,
-                        "endColumn": 121,
-                        "endOffset": 2412
+                        "startOffset": 1443,
+                        "endColumn": 100,
+                        "endOffset": 1539
                     }
                 }
             },
@@ -234,12 +234,373 @@
                 "to": {
                     "startLine": 14,
                     "startColumn": 4,
-                    "startOffset": 2109,
-                    "endColumn": 131,
-                    "endOffset": 2236
+                    "startOffset": 1358,
+                    "endColumn": 127,
+                    "endOffset": 1481
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1544,
+                        "endColumn": 127,
+                        "endOffset": 1667
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 1486,
+                    "endColumn": 185,
+                    "endOffset": 1667
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 469,
+                        "endColumn": 189,
+                        "endOffset": 654
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 1672,
+                    "endColumn": 187,
+                    "endOffset": 1855
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 2566,
+                        "endColumn": 191,
+                        "endOffset": 2753
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 1860,
+                    "endColumn": 114,
+                    "endOffset": 1970
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 2256,
+                        "endColumn": 114,
+                        "endOffset": 2366
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1975,
+                    "endColumn": 263,
+                    "endOffset": 2234
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 4414,
+                        "endColumn": 267,
+                        "endOffset": 4677
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 2239,
+                    "endColumn": 126,
+                    "endOffset": 2361
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 2001,
+                        "endColumn": 126,
+                        "endOffset": 2123
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 2366,
+                    "endColumn": 187,
+                    "endOffset": 2549
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 1809,
+                        "endColumn": 191,
+                        "endOffset": 1996
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 2554,
+                    "endColumn": 128,
+                    "endOffset": 2678
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 1680,
+                        "endColumn": 128,
+                        "endOffset": 1804
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 2683,
+                    "endColumn": 163,
+                    "endOffset": 2842
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 823,
+                        "endColumn": 167,
+                        "endOffset": 986
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 2847,
+                    "endColumn": 127,
+                    "endOffset": 2970
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 1552,
+                        "endColumn": 127,
+                        "endOffset": 1675
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 2975,
+                    "endColumn": 212,
+                    "endOffset": 3183
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 1119,
+                        "endColumn": 216,
+                        "endOffset": 1331
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 3188,
+                    "endColumn": 211,
+                    "endOffset": 3395
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 1336,
+                        "endColumn": 215,
+                        "endOffset": 1547
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 3400,
+                    "endColumn": 127,
+                    "endOffset": 3523
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 991,
+                        "endColumn": 127,
+                        "endOffset": 1114
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 3528,
+                    "endColumn": 172,
+                    "endOffset": 3696
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 3527,
+                        "endColumn": 172,
+                        "endOffset": 3695
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 3701,
+                    "endColumn": 122,
+                    "endOffset": 3819
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 3404,
+                        "endColumn": 122,
+                        "endOffset": 3522
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 29,
+                    "startColumn": 4,
+                    "startOffset": 3824,
+                    "endColumn": 163,
+                    "endOffset": 3983
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 659,
+                        "endColumn": 163,
+                        "endOffset": 818
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 3988,
+                    "endColumn": 179,
+                    "endOffset": 4163
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 3224,
+                        "endColumn": 179,
+                        "endOffset": 3399
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 31,
+                    "startColumn": 4,
+                    "startOffset": 4168,
+                    "endColumn": 121,
+                    "endOffset": 4285
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 3102,
+                        "endColumn": 121,
+                        "endOffset": 3219
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 32,
+                    "startColumn": 4,
+                    "startOffset": 4290,
+                    "endColumn": 166,
+                    "endOffset": 4452
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 302,
+                        "endColumn": 166,
+                        "endOffset": 464
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 33,
+                    "startColumn": 4,
+                    "startOffset": 4457,
+                    "endColumn": 131,
+                    "endOffset": 4584
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -251,305 +612,343 @@
             },
             {
                 "to": {
-                    "startLine": 15,
+                    "startLine": 34,
                     "startColumn": 4,
-                    "startOffset": 2241,
-                    "endColumn": 167,
-                    "endOffset": 2404
+                    "startOffset": 4589,
+                    "endColumn": 183,
+                    "endOffset": 4768
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
                     "position": {
-                        "startLine": 28,
+                        "startLine": 32,
                         "startColumn": 4,
-                        "startOffset": 4177,
-                        "endColumn": 167,
-                        "endOffset": 4340
+                        "startOffset": 4814,
+                        "endColumn": 183,
+                        "endOffset": 4993
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 16,
+                    "startLine": 35,
                     "startColumn": 4,
-                    "startOffset": 2409,
-                    "endColumn": 128,
-                    "endOffset": 2533
-                },
-                "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
-                    "position": {
-                        "startLine": 27,
-                        "startColumn": 4,
-                        "startOffset": 4048,
-                        "endColumn": 128,
-                        "endOffset": 4172
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 17,
-                    "startColumn": 4,
-                    "startOffset": 2538,
-                    "endColumn": 181,
-                    "endOffset": 2715
-                },
-                "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
-                    "position": {
-                        "startLine": 26,
-                        "startColumn": 4,
-                        "startOffset": 3866,
-                        "endColumn": 181,
-                        "endOffset": 4043
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 18,
-                    "startColumn": 4,
-                    "startOffset": 2720,
+                    "startOffset": 4773,
                     "endColumn": 131,
-                    "endOffset": 2847
+                    "endOffset": 4900
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 31,
+                        "startColumn": 4,
+                        "startOffset": 4682,
+                        "endColumn": 131,
+                        "endOffset": 4809
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 36,
+                    "startColumn": 4,
+                    "startOffset": 4905,
+                    "endColumn": 141,
+                    "endOffset": 5042
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
                     "position": {
                         "startLine": 25,
                         "startColumn": 4,
-                        "startOffset": 3734,
-                        "endColumn": 131,
-                        "endOffset": 3861
+                        "startOffset": 3700,
+                        "endColumn": 141,
+                        "endOffset": 3837
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 19,
+                    "startLine": 37,
                     "startColumn": 4,
-                    "startOffset": 2852,
-                    "endColumn": 246,
-                    "endOffset": 3094
-                },
-                "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.4.0\\res\\values-sr\\common_strings.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 170,
-                        "endColumn": 250,
-                        "endOffset": 416
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 20,
-                    "startColumn": 4,
-                    "startOffset": 3099,
+                    "startOffset": 5047,
                     "endColumn": 238,
-                    "endOffset": 3333
+                    "endOffset": 5281
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
                     "position": {
-                        "startLine": 21,
+                        "startLine": 27,
                         "startColumn": 4,
-                        "startOffset": 3017,
+                        "startOffset": 3965,
                         "endColumn": 242,
-                        "endOffset": 3255
+                        "endOffset": 4203
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 21,
+                    "startLine": 38,
                     "startColumn": 4,
-                    "startOffset": 3338,
-                    "endColumn": 121,
-                    "endOffset": 3455
+                    "startOffset": 5286,
+                    "endColumn": 122,
+                    "endOffset": 5404
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
                     "position": {
-                        "startLine": 20,
+                        "startLine": 26,
                         "startColumn": 4,
-                        "startOffset": 2895,
-                        "endColumn": 121,
-                        "endOffset": 3012
+                        "startOffset": 3842,
+                        "endColumn": 122,
+                        "endOffset": 3960
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 22,
+                    "startLine": 39,
                     "startColumn": 4,
-                    "startOffset": 3460,
+                    "startOffset": 5409,
                     "endColumn": 108,
-                    "endOffset": 3564
+                    "endOffset": 5513
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
                     "position": {
-                        "startLine": 22,
+                        "startLine": 28,
                         "startColumn": 4,
-                        "startOffset": 3260,
+                        "startOffset": 4208,
                         "endColumn": 108,
-                        "endOffset": 3364
+                        "endOffset": 4312
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 23,
+                    "startLine": 40,
                     "startColumn": 4,
-                    "startOffset": 3569,
+                    "startOffset": 5518,
                     "endColumn": 190,
-                    "endOffset": 3755
+                    "endOffset": 5704
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
                     "position": {
-                        "startLine": 12,
+                        "startLine": 17,
                         "startColumn": 4,
-                        "startOffset": 1583,
+                        "startOffset": 2371,
                         "endColumn": 194,
-                        "endOffset": 1773
+                        "endOffset": 2561
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 24,
+                    "startLine": 41,
                     "startColumn": 4,
-                    "startOffset": 3760,
-                    "endColumn": 128,
-                    "endOffset": 3884
+                    "startOffset": 5709,
+                    "endColumn": 127,
+                    "endOffset": 5832
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
-                    "position": {
-                        "startLine": 11,
-                        "startColumn": 4,
-                        "startOffset": 1454,
-                        "endColumn": 128,
-                        "endOffset": 1578
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 25,
-                    "startColumn": 4,
-                    "startOffset": 3889,
-                    "endColumn": 207,
-                    "endOffset": 4092
-                },
-                "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 2083,
+                        "startOffset": 2128,
+                        "endColumn": 127,
+                        "endOffset": 2251
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 42,
+                    "startColumn": 4,
+                    "startOffset": 5837,
+                    "endColumn": 207,
+                    "endOffset": 6040
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 2890,
                         "endColumn": 211,
-                        "endOffset": 2290
+                        "endOffset": 3097
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 26,
+                    "startLine": 43,
                     "startColumn": 4,
-                    "startOffset": 4097,
-                    "endColumn": 132,
-                    "endOffset": 4225
+                    "startOffset": 6045,
+                    "endColumn": 131,
+                    "endOffset": 6172
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
                     "position": {
-                        "startLine": 14,
+                        "startLine": 19,
                         "startColumn": 4,
-                        "startOffset": 1950,
-                        "endColumn": 132,
-                        "endOffset": 2078
+                        "startOffset": 2758,
+                        "endColumn": 131,
+                        "endOffset": 2885
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 27,
+                    "startLine": 44,
                     "startColumn": 4,
-                    "startOffset": 4230,
-                    "endColumn": 171,
-                    "endOffset": 4397
-                },
-                "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
-                    "position": {
-                        "startLine": 13,
-                        "startColumn": 4,
-                        "startOffset": 1778,
-                        "endColumn": 171,
-                        "endOffset": 1945
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 28,
-                    "startColumn": 4,
-                    "startOffset": 4402,
+                    "startOffset": 6177,
                     "endColumn": 96,
-                    "endOffset": 4494
+                    "endOffset": 6269
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
-                    "position": {
-                        "startLine": 23,
-                        "startColumn": 4,
-                        "startOffset": 3369,
-                        "endColumn": 96,
-                        "endOffset": 3461
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 29,
-                    "startColumn": 4,
-                    "startOffset": 4499,
-                    "endColumn": 94,
-                    "endOffset": 4589
-                },
-                "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.1.0\\res\\values-sr\\common_strings.xml",
                     "position": {
                         "startLine": 29,
                         "startColumn": 4,
-                        "startOffset": 4345,
-                        "endColumn": 94,
-                        "endOffset": 4435
+                        "startOffset": 4317,
+                        "endColumn": 96,
+                        "endOffset": 4409
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 30,
+                    "startLine": 45,
                     "startColumn": 4,
-                    "startOffset": 4594,
-                    "endColumn": 109,
-                    "endOffset": 4699
+                    "startOffset": 6274,
+                    "endColumn": 112,
+                    "endOffset": 6382
                 },
                 "from": {
-                    "file": "C:\\Users\\Mourad\\pfe\\SpeedTest\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-sr\\base_strings.xml",
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
                     "position": {
-                        "startLine": 30,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 4440,
+                        "startOffset": 293,
+                        "endColumn": 112,
+                        "endOffset": 401
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 46,
+                    "startColumn": 4,
+                    "startOffset": 6387,
+                    "endColumn": 112,
+                    "endOffset": 6495
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 406,
+                        "endColumn": 112,
+                        "endOffset": 514
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 47,
+                    "startColumn": 4,
+                    "startOffset": 6500,
+                    "endColumn": 107,
+                    "endOffset": 6603
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 519,
+                        "endColumn": 107,
+                        "endOffset": 622
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 48,
+                    "startColumn": 4,
+                    "startOffset": 6608,
+                    "endColumn": 106,
+                    "endOffset": 6710
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 627,
+                        "endColumn": 106,
+                        "endOffset": 729
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 49,
+                    "startColumn": 4,
+                    "startOffset": 6715,
+                    "endColumn": 85,
+                    "endOffset": 6796
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 734,
+                        "endColumn": 85,
+                        "endOffset": 815
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 50,
+                    "startColumn": 4,
+                    "startOffset": 6801,
+                    "endColumn": 93,
+                    "endOffset": 6890
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\22.2.0\\res\\values-sr\\values-sr.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 820,
+                        "endColumn": 93,
+                        "endOffset": 909
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 51,
+                    "startColumn": 4,
+                    "startOffset": 6895,
+                    "endColumn": 109,
+                    "endOffset": 7000
+                },
+                "from": {
+                    "file": "C:\\Users\\Mourad\\SpeedTestNew\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-wallet\\8.1.0\\res\\values-sr\\wallet_strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 230,
                         "endColumn": 109,
-                        "endOffset": 4545
+                        "endOffset": 335
                     }
                 }
             }

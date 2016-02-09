@@ -1,0 +1,22 @@
+-keep class com.speedtest.MainActivity { <init>(); }
+-keep class com.speedtest.ScatterPlot { <init>(); }
+-keep class com.speedtest.TableView { <init>(); }
+-keep class com.speedtest.CandleStickChartActivity { <init>(); }
+-keep class com.speedtest.SimpleRegressionActivity { <init>(); }
+-keep class com.speedtest.services.CheckSpeedService { <init>(); }
+-keep class com.speedtest.services.LocationService { <init>(); }
+-keep class com.google.android.gms.ads.AdActivity { <init>(); }
+-keep class com.google.android.gms.ads.purchase.InAppPurchaseActivity { <init>(); }
+-keep class com.google.android.gms.measurement.AppMeasurementContentProvider { <init>(); }
+-keep class com.google.android.gms.measurement.AppMeasurementReceiver { <init>(); }
+-keep class com.google.android.gms.measurement.AppMeasurementService { <init>(); }
+-keep public class * extends android.app.backup.BackupAgent {
+    <init>();
+}
+-keep public class * extends java.lang.annotation.Annotation {
+    *;
+}
+-keep class com.android.tools.fd.** {
+    *;
+}
+-dontnote com.android.tools.fd.**,android.support.multidex.MultiDexExtractor

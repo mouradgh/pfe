@@ -17,7 +17,7 @@ import com.speedtest.services.LocationService;
 
 import org.apache.commons.math3.stat.regression.SimpleRegression;
 
-public classMainActivity extends Activity {
+public class MainActivity extends Activity {
 
 	private SimpleRegression simpleRegression = new SimpleRegression();
 
