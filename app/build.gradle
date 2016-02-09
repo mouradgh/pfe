@@ -24,7 +24,7 @@ dependencies {
     compile files('libs/android-support-v4.jar')
     //compile 'com.google.android.gms:play-services-maps:8.4.0'
     compile 'org.apache.commons:commons-math3:3.0'
-    compile('com.google.android.gms:play-services:8.1.0') {
+    compile('com.google.android.gms:play-services:+') {
         exclude group: 'com.android.support', module: 'support-v4'
     }
 }
