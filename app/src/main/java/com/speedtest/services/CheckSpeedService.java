@@ -182,20 +182,25 @@ public class CheckSpeedService extends Service {
     // Http request download file
     /**********************************************************************************************/
     public float downloadFile(String fileName) {
-        final String upLoadServerUri = "http://topcity-1.com/test/testing/uploads/";
+        final String upLoadServerUri = "http://rockstar-onquantum.rhcloud.com/images/" + fileName;//"https://test.amcysoft.com/speedtest/uploads/" + fileName;
         float dataRate = 0;
+        HttpURLConnection conn = null;
         try {
-            URL url = new URL(upLoadServerUri + fileName);
+            URL url = new URL(upLoadServerUri);
             File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
             if (!path.exists()) path.mkdirs();
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
+            conn.setConnectTimeout(50000);
+            conn.setReadTimeout(50000);
+            conn.setDoInput(true);
             conn.connect();
+
             OutputStream os = new FileOutputStream(new File(path, fileName));
             InputStream is = conn.getInputStream();
 
             long startTime = System.currentTimeMillis();
-            int download = 0;
+            long download = 0;
             byte[] data = new byte[1024];
             int bufferLength = 0;
             while ((bufferLength = is.read(data)) > 0) {
@@ -205,10 +210,13 @@ public class CheckSpeedService extends Service {
             long endTime = System.currentTimeMillis();
             float rate = download / (float)(endTime - startTime);
             dataRate = rate * 1000 / 1024.0f;
+
             is.close();
             os.close();
         } catch (Exception e) {
             Log.i("test", "" + e);
+        }finally {
+            conn.disconnect();
         }
         return dataRate;
     }

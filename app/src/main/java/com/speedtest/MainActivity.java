@@ -26,7 +26,8 @@ public class MainActivity extends Activity {
 	private LatLng latLng = new LatLng(0,0);
 
 	private ProgressDialog dialog;
-	public static String[] files = new String[] {"lighthouse.jpg", "hydrangeas.jpg", "tulips.jpg","jellyfish.jpg", "koala.jpg"};
+	//public static String[] files = new String[] {"lighthouse.jpg", "hydrangeas.jpg", "tulips.jpg","jellyfish.jpg", "koala.jpg"};
+	public static String[] files = new String[] {"img5.jpg", "img4.jpg", "img3.jpg","img2.jpg", "img1.jpg"};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
