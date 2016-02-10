@@ -63,12 +63,6 @@ public class DataModel {
     public String getPhoneName() { return this.phoneName; }
     public String getVersion() { return this.version; }
 
-    /*@Override
-    public String toString() {
-        return "File name|" + fileName + "," + " Size|" + fileSize + "," + " Download speed|" + downloadSpeed + "," + " Upload speed|" + uploadSpeed + ","
-                + " Date Time|" + date + "," + " Time|" + time + "," + " Internet type|" + internetType;
-    }*/
-
     @Override
     public String toString() {
         return fileName + "," + fileSize + "," + downloadSpeed + "," + uploadSpeed + "," + date + "," + time + "," + internetType + "," + latLng.latitude + ","

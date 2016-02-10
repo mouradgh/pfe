@@ -10,6 +10,17 @@ import android.widget.TextView;
 
 //import com.github.mikephil.charting.*;
 
+//import com.github.PhilJay.MPAndroidChart.MPChartLib;
+
+/*
+import com.github.PhilJay.MPAndroidChart.MPChartLib.src.com.github.mikephil.charting.charts.CandleStickChart;
+import com.github.PhilJay.MPAndroidChart.MPChartLib.src.com.github.mikephil.charting.components.Legend;
+import com.github.PhilJay.MPAndroidChart.MPChartLib.src.com.github.mikephil.charting.components.XAxis;
+import com.github.PhilJay.MPAndroidChart.MPChartLib.src.com.github.mikephil.charting.components.YAxis;
+import com.github.PhilJay.MPAndroidChart.MPChartLib.src.com.github.mikephil.charting.data.CandleData;
+import com.github.PhilJay.MPAndroidChart.MPChartLib.src.com.github.mikephil.charting.data.CandleDataSet;
+import com.github.PhilJay.MPAndroidChart.MPChartLib.src.com.github.mikephil.charting.data.CandleEntry;
+*/
 
 import com.github.mikephil.charting.charts.CandleStickChart;
 import com.github.mikephil.charting.components.Legend;
@@ -44,15 +55,6 @@ public class CandleStickChartActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.candlechart_layout);
 
-        //tvX = (TextView) findViewById(R.id.tvXMax);
-        //tvY = (TextView) findViewById(R.id.tvYMax);
-
-        //mSeekBarX = (SeekBar) findViewById(R.id.seekBar1);
-        //mSeekBarX.setOnSeekBarChangeListener(this);
-
-        //mSeekBarY = (SeekBar) findViewById(R.id.seekBar2);
-        //mSeekBarY.setOnSeekBarChangeListener(this);
-
 
         List<DataModel> dataModelList = FileUtils.ParseDataFile(this,FileUtils.GetRootPath(this) + FileUtils.CHECK_SPEED_RESULT_FILE);
         DataModel[] dataModels;
@@ -80,16 +82,12 @@ public class CandleStickChartActivity extends Activity {
             xAxis.setDrawGridLines(true);
 
             YAxis leftAxis = mChart.getAxisLeft();
-//        leftAxis.setEnabled(false);
-            //leftAxis.setLabelCount(7, false);
+
             leftAxis.setDrawGridLines(false);
-            //leftAxis.setDrawAxisLine(false);
-            //leftAxis.setStartAtZero(false);
+
 
             YAxis rightAxis = mChart.getAxisRight();
             rightAxis.setEnabled(false);
-//        rightAxis.setStartAtZero(false);
-
 
             mChart.getLegend().setEnabled(false);
 
@@ -98,11 +96,6 @@ public class CandleStickChartActivity extends Activity {
              l.setFormSize(8f);
              l.setFormToTextSpace(4f);
              l.setXEntrySpace(6f);
-
-            //mChart.setDrawLegend(false);
-
-            //Legend l = mChart.getLegend();
-            //l.setPosition(Legend.LegendPosition.BELOW_CHART_RIGHT);
 
             mChart.getAxisRight().setEnabled(false);
 
@@ -129,10 +122,6 @@ public class CandleStickChartActivity extends Activity {
                 );
             }
 
-            /*ArrayList<String> xVals = new ArrayList<String>();
-            for (int i = 0; i < 5; i++) {
-                xVals.add("" + (1990 + i));
-            }*/
             ArrayList<String> xVals = new ArrayList<String>();
             for (int i = 0; i < 5; i++) {
                 xVals.add((dataModels[i].getFileSize() / 1024) + " kb");
@@ -140,25 +129,24 @@ public class CandleStickChartActivity extends Activity {
 
             CandleDataSet set1 = new CandleDataSet(yVals1, "Download");
             set1.setAxisDependency(YAxis.AxisDependency.LEFT);
-//        set1.setColor(Color.rgb(80, 80, 80));
+
             set1.setShadowColor(Color.RED);
             set1.setShadowWidth(0.7f);
             set1.setDecreasingColor(Color.RED);
             set1.setDecreasingPaintStyle(Paint.Style.STROKE);
             set1.setIncreasingColor(Color.rgb(255, 0, 0));
             set1.setIncreasingPaintStyle(Paint.Style.STROKE);
-            //set1.setHighlightLineWidth(1f);
+
 
             CandleDataSet set2 = new CandleDataSet(yVals2, "Upload");
             set2.setAxisDependency(YAxis.AxisDependency.LEFT);
-//        set1.setColor(Color.rgb(80, 80, 80));
+
             set2.setShadowColor(Color.BLUE);
             set2.setShadowWidth(0.5f);
             set2.setDecreasingColor(Color.BLUE);
             set2.setDecreasingPaintStyle(Paint.Style.STROKE);
             set2.setIncreasingColor(Color.rgb(0, 0, 255));
             set2.setIncreasingPaintStyle(Paint.Style.STROKE);
-            //set1.setHighlightLineWidth(1f);
 
             List<CandleDataSet> candleDataSets = new ArrayList<>();
             candleDataSets.add(set1);

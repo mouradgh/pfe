@@ -23,6 +23,11 @@ android {
     }
 }
 
+
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile files('libs/android-support-v4.jar')
@@ -32,5 +37,5 @@ dependencies {
     compile('com.google.android.gms:play-services:+') {
         exclude group: 'com.android.support', module: 'support-v4'
     }
-    //compile 'com.github.PhilJay:MPAndroidChart:v2.2.0'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.1.5'
 }
