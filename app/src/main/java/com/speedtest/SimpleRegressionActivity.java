@@ -93,14 +93,14 @@ public class SimpleRegressionActivity extends Activity {
             editText.getText().append("Intercept = " + Double.toString(downloadDataSimpleRegression.getIntercept()) + "\n");
             editText.getText().append("Slope = " + Double.toString(downloadDataSimpleRegression.getSlope()) + "\n");
             editText.getText().append("Slope Std Err = " + Double.toString(downloadDataSimpleRegression.getSlopeStdErr()) + "\n");
-            editText.getText().append("Predict = " + Double.toString(downloadDataSimpleRegression.predict(predict)));
+            editText.getText().append("Predict = " + Double.toString(predict/(downloadDataSimpleRegression.predict(predict)*1000)));
             editText.getText().append("\n\n");
 
             editText.getText().append("Upload data:" + "\n");
             editText.getText().append("Intercept = " + Double.toString(uploadDataSimpleRegression.getIntercept()) + "\n");
             editText.getText().append("Slope = " + Double.toString(uploadDataSimpleRegression.getSlope()) + "\n");
             editText.getText().append("Slope Std Err = " + Double.toString(uploadDataSimpleRegression.getSlopeStdErr()) + "\n");
-            editText.getText().append("Predict = " + Double.toString(uploadDataSimpleRegression.predict(predict)));
+            editText.getText().append("Predict = " + Double.toString(predict/(uploadDataSimpleRegression.predict(predict)*1000)));
 
             editText.getText().append("\n" + "--------------------------------------------------------------" + "\n");
         } catch (NumberFormatException e) {

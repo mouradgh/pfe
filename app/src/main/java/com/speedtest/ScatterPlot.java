@@ -10,6 +10,10 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+
+//import com.github.mikephil.charting.*;
+
+
 import com.github.mikephil.charting.charts.ScatterChart;
 import com.github.mikephil.charting.charts.ScatterChart.ScatterShape;
 import com.github.mikephil.charting.components.Legend;
@@ -19,8 +23,11 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.ScatterData;
 import com.github.mikephil.charting.data.ScatterDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+
+
 import com.speedtest.FileUtils.FileUtils;
 import com.speedtest.model.DataModel;
+
 
 public class ScatterPlot extends Activity {
 	

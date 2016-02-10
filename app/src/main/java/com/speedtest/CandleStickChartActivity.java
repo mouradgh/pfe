@@ -8,6 +8,9 @@ import android.view.WindowManager;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+//import com.github.mikephil.charting.*;
+
+
 import com.github.mikephil.charting.charts.CandleStickChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -15,8 +18,11 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.CandleData;
 import com.github.mikephil.charting.data.CandleDataSet;
 import com.github.mikephil.charting.data.CandleEntry;
+
+
 import com.speedtest.FileUtils.FileUtils;
 import com.speedtest.model.DataModel;
+
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
