@@ -31,12 +31,13 @@ public class MapView extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        SharedPreferences sp = getSharedPreferences("session", Context.MODE_PRIVATE);
-        LatLng speed = new LatLng(Double.parseDouble(sp.getString("mapX", "")), Double.parseDouble(sp.getString("mapY", "")));
+        LatLng sydney = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        /*LatLng speed = new LatLng(Double.parseDouble(sp.getString("mapX", "")), Double.parseDouble(sp.getString("mapY", "")));
         float down = sp.getFloat("avgDown", 0);
         float up = sp.getFloat("avgUp", 0);
         mMap.addMarker(new MarkerOptions().position(speed).title("Downloading: "+down+"\nUploading: "+up));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(speed));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(speed));*/
     }
 }
