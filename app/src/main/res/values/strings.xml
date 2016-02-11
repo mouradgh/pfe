@@ -9,6 +9,7 @@
     <string name="viewTable">Recent Tabular View</string>
     <string name="viewPlot">View Recent Scatter Plot</string>
     <string name="title_activity_table_view">Tabular View</string>
+    <string name="title_activity_map_view">Map View</string>
     <string name="file_size">File Size (bytes)</string>
     <string name="upload_speed">Upload Speed (kb/s)</string>
     <string name="download_speed">Download Speed (kb/s)</string>

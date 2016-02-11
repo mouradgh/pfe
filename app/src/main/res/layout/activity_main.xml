@@ -53,5 +53,12 @@
         android:id="@+id/button2"
         android:layout_marginTop="25dp"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Map view"
+        android:onClick="viewMap"
+        android:layout_marginTop="25dp"/>
+
 
 </LinearLayout>

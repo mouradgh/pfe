@@ -84,7 +84,7 @@ public class MainActivity extends Activity {
 		IntentFilter intentFilter = new IntentFilter(LocationService.LOCATION_CHANGE_BROADCAST_RECEIVER);
 		registerReceiver(locationChange, intentFilter);
 
-		Log.i("info"," LOCATION : " + latLng.toString());
+		Log.i("info", " LOCATION : " + latLng.toString());
 	}
 
 	@Override
@@ -94,7 +94,7 @@ public class MainActivity extends Activity {
 			unregisterReceiver(broadcastReceiver);
 
 		// Stop Location service
-		stopService(new Intent(getApplicationContext(),LocationService.class));
+		stopService(new Intent(getApplicationContext(), LocationService.class));
 		unregisterReceiver(locationChange);
 	}
 
@@ -125,6 +125,11 @@ public class MainActivity extends Activity {
 	
 	public void viewTable(View v) {
 		Intent i = new Intent(this, TableView.class);
+		startActivity(i);
+	}
+
+	public void viewMap(View v) {
+		Intent i = new Intent(this, MapView.class);
 		startActivity(i);
 	}
 }

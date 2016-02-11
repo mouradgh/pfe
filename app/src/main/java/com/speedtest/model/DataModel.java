@@ -62,6 +62,7 @@ public class DataModel {
     public float getUploadSpeed() { return this.uploadSpeed; }
     public String getPhoneName() { return this.phoneName; }
     public String getVersion() { return this.version; }
+    public LatLng getLocation() { return this.latLng; }
 
     @Override
     public String toString() {
