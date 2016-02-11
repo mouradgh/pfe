@@ -16,6 +16,9 @@ local.properties
 # Log Files
 *.log
 
+# IML Files
+*.iml
+
 # Android Studio Navigation editor temp files
 .navigation/
 

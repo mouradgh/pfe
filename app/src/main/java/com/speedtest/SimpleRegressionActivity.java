@@ -15,7 +15,14 @@ import android.widget.TextView;
 import com.speedtest.FileUtils.FileUtils;
 import com.speedtest.model.DataModel;
 
+//import org.apache.commons.math3.stat.regression.SimpleRegression;
+import org.apache.commons.math3.*;
+import org.apache.commons.math3.fitting.WeightedObservedPoints;
+import org.apache.commons.math3.optimization.fitting.PolynomialFitter;
+import org.apache.commons.math3.optimization.general.GaussNewtonOptimizer;
 import org.apache.commons.math3.stat.regression.SimpleRegression;
+import org.apache.commons.math3.optimization.fitting.WeightedObservedPoint;
+import org.apache.commons.math3.fitting.PolynomialCurveFitter;
 
 import java.util.List;
 
@@ -80,6 +87,24 @@ public class SimpleRegressionActivity extends Activity {
                 }
             });
         }
+
+        /*
+        final WeightedObservedPoints obs = new WeightedObservedPoints();
+        obs.add(dataDownload);
+        final PolynomialCurveFitter fitter = PolynomialCurveFitter.create(3);
+        final double[] coeff = fitter.fit(obs.toList());
+        */
+
+        final WeightedObservedPoints obs = new WeightedObservedPoints();
+        obs.add(-1.00, 2.021170021833143);
+        obs.add(-0.99, 2.221135431136975);
+        obs.add(-0.98, 2.09985277659314);
+        obs.add(-0.97, 2.0211192647627025);
+        obs.add(0.99, -2.4345814727089854);
+
+        final PolynomialCurveFitter fitter = PolynomialCurveFitter.create(3);
+
+        final double[] coeff = fitter.fit(obs.toList());
     }
 
 
