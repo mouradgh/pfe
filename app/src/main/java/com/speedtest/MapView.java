@@ -19,8 +19,7 @@ public class MapView extends AppCompatActivity  implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_view);
 
-        SupportMapFragment mapFragment =
-                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
 
