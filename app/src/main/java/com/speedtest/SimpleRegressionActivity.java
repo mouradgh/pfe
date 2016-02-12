@@ -29,6 +29,7 @@ import org.apache.commons.math3.fitting.PolynomialCurveFitter;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -49,11 +50,11 @@ public class SimpleRegressionActivity extends Activity {
     private double[][] dataUpload;
 
     //private WeightedObservedPoints observations = new WeightedObservedPoints();
-    private List<WeightedObservedPoint> observations = new ArrayList<>();
+    private List<WeightedObservedPoint> observations = new LinkedList<>();
     private WeightedObservedPoint tmpObsv=null;
     //private Collection<WeightedObservedPoint> observations 
 
-    private double[] coeff;
+    private double[] coeff=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,15 +108,14 @@ public class SimpleRegressionActivity extends Activity {
                 }
             });
         }
-
-        PolynomialCurveFitter fitter = PolynomialCurveFitter.create(2);
-        coeff = fitter.fit(observations);
-
     }
 
 
     private void CalculateRegression() {
         try {
+            PolynomialCurveFitter fitter = PolynomialCurveFitter.create(2);
+            coeff = fitter.fit(observations);
+
             double predict = Double.parseDouble(predictText.getText().toString());
 
             editText.getText().append("Predict value = " + Double.toString(predict) + "\n");
@@ -133,6 +133,7 @@ public class SimpleRegressionActivity extends Activity {
             editText.getText().append("Slope Std Err = " + Double.toString(uploadDataSimpleRegression.getSlopeStdErr()) + "\n");
             editText.getText().append("Predict = " + Double.toString(predict/(uploadDataSimpleRegression.predict(predict)*1000)));
             editText.getText().append("Predict = " + coeff[0] + "," + coeff[1] + "," + coeff[2] + "\n");
+            //editText.getText().append(observations.toString());
             editText.getText().append("\n" + "--------------------------------------------------------------" + "\n");
         } catch (NumberFormatException e) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);

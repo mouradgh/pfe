@@ -27,7 +27,7 @@ android {
 
     dexOptions {
         incremental true
-        javaMaxHeapSize "4g"
+        //javaMaxHeapSize "4g"
     }
 }
 
@@ -39,4 +39,5 @@ dependencies {
     compile 'org.apache.commons:commons-math3:3.3'
     compile 'com.google.android.gms:play-services:+'
     compile 'com.github.PhilJay:MPAndroidChart:v2.1.5'
+    compile 'gov.nist.math:jama:1.0.2'
 }
