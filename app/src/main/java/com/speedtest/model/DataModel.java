@@ -57,6 +57,7 @@ public class DataModel {
 
     // Getter
     public String getFileName() { return this.fileName; }
+    public String getConnectionType() { return this.internetType; }
     public long getFileSize() { return this.fileSize; }
     public float getDownloadSpeed() { return this.downloadSpeed; }
     public float getUploadSpeed() { return this.uploadSpeed; }
