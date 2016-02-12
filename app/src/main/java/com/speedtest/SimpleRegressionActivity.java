@@ -20,12 +20,10 @@ import org.apache.commons.math3.stat.regression.SimpleRegression;
 //import org.apache.commons.math3.stat.regression.SimpleRegression;
 
 import org.apache.commons.math3.*;
-import org.apache.commons.math3.fitting.WeightedObservedPoints;
 import org.apache.commons.math3.optimization.fitting.PolynomialFitter;
 import org.apache.commons.math3.optimization.general.GaussNewtonOptimizer;
 import org.apache.commons.math3.util.CompositeFormat;
 import org.apache.commons.math3.fitting.WeightedObservedPoint;
-
 import org.apache.commons.math3.fitting.PolynomialCurveFitter;
 
 
@@ -50,7 +48,9 @@ public class SimpleRegressionActivity extends Activity {
     private double[][] dataDownload;
     private double[][] dataUpload;
 
-    private WeightedObservedPoints observations = new WeightedObservedPoints();
+    //private WeightedObservedPoints observations = new WeightedObservedPoints();
+    private List<WeightedObservedPoint> observations = new ArrayList<>();
+    private WeightedObservedPoint tmpObsv=null;
     //private Collection<WeightedObservedPoint> observations 
 
     private double[] coeff;
@@ -89,7 +89,12 @@ public class SimpleRegressionActivity extends Activity {
                 dataUpload[i][0] = (double) dataModelList.get(i).getFileSize();
                 dataUpload[i][1] = (double) dataModelList.get(i).getUploadSpeed();
 
-                observations.add((double) dataModelList.get(i).getFileSize(), (double) dataModelList.get(i).getDownloadSpeed());
+                tmpObsv = new WeightedObservedPoint(1.0, dataDownload[i][0], dataDownload[i][1]);
+                //tmpObsv.setWeight(1.0);
+                //tmpObsv.setX((double) dataModelList.get(i).getFileSize());
+                //tmpObsv.setY((double) dataModelList.get(i).getDownloadSpeed());
+
+                observations.add(tmpObsv);
             }
 
             downloadDataSimpleRegression.addData(dataDownload);
