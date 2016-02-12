@@ -55,15 +55,11 @@ public class MapView extends FragmentActivity implements OnMapReadyCallback {
             for (DataModel dataModel : dataModelList) {
                 loc = dataModel.getLocation();
                 Color = getColorSpeed(dataModel.getDownloadSpeed());
-                mMap.addMarker(new MarkerOptions().position(loc).title(dataModel.getConnectionType())
+                mMap.addMarker(new MarkerOptions().position(loc).title(dataModel.getConnectionType()+ " " + dataModel.getOperator())
                         .icon(BitmapDescriptorFactory.defaultMarker(Color)));
             }
         }
         // setting the geolocation to true
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
         mMap.setMyLocationEnabled(true);
 
     }

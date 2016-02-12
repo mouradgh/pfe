@@ -18,8 +18,9 @@ public class DataModel {
     private LatLng latLng = new LatLng(0,0);
     private String phoneName = "";
     private String version = "";
+    private String operator = "";
 
-    public static String tableHeader = "File name, File size, Download speed, Upload speed, Date, Time, Connection type, Latitude, Longitude, Phone name, Android version";
+    public static String tableHeader = "File name, File size, Download speed, Upload speed, Date, Time, Connection type, Latitude, Longitude, Phone name, Android version, Operator";
 
     public DataModel() {}
 
@@ -54,10 +55,12 @@ public class DataModel {
     public void setVersion(String version) {
         this.version = version;
     }
+    public void setOperator(String operator) { this.operator = operator; }
 
     // Getter
     public String getFileName() { return this.fileName; }
     public String getConnectionType() { return this.internetType; }
+    public String getOperator() { return this.operator; }
     public long getFileSize() { return this.fileSize; }
     public float getDownloadSpeed() { return this.downloadSpeed; }
     public float getUploadSpeed() { return this.uploadSpeed; }

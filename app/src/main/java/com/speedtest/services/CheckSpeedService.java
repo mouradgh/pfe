@@ -1,12 +1,14 @@
 package com.speedtest.services;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Environment;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.util.Log;
+import android.telephony.TelephonyManager;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.speedtest.FileUtils.FileUtils;
@@ -48,7 +50,6 @@ public class CheckSpeedService extends Service {
     private SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("HH:mm:ss");
     private LatLng latLng;
     private ExecutorService executorService = null;
-
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -100,7 +101,7 @@ public class CheckSpeedService extends Service {
             for (int i = 0; i < repeat * files.length; i++) {
                 dataModelsList.add(new DataModel());
             }
-
+            TelephonyManager  tm=(TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
             File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
             if (!path.exists())
                 path.mkdirs();
@@ -121,6 +122,7 @@ public class CheckSpeedService extends Service {
                     dataModelsList.get(i * repeat + repeatDownload).setLocation(latLng);
                     dataModelsList.get(i * repeat + repeatDownload).setPhoneName(getDeviceName());
                     dataModelsList.get(i * repeat + repeatDownload).setVersion(new String(Build.VERSION.RELEASE));
+                    dataModelsList.get(i * repeat + repeatDownload).setOperator(tm.getNetworkOperatorName());
                     repeatDownload += 1;
                 }while (repeatDownload < repeat);
                 repeatDownload = 0;
