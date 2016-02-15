@@ -16,8 +16,14 @@ local.properties
 # Log Files
 *.log
 
+# IML Files
+*.iml
+
 # Android Studio Navigation editor temp files
 .navigation/
 
 # Android Studio captures folder
 captures/
+
+# idea folder
+.idea
