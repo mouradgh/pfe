@@ -16,9 +16,9 @@ import com.speedtest.FileUtils.FileUtils;
 import com.speedtest.model.DataModel;
 import com.speedtest.PolynomialRegression;
 
-import org.apache.commons.math3.linear.RealMatrix;
+//import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.stat.regression.SimpleRegression;
-import org.apache.commons.math3.linear.Array2DRowRealMatrix;
+//import org.apache.commons.math3.linear.Array2DRowRealMatrix;
 
 
 import java.util.List;
@@ -40,8 +40,16 @@ public class SimpleRegressionActivity extends Activity {
     private PolynomialRegression downloadDataPolynomialRegression;
     private PolynomialRegression uploadDataPolynomialRegression;
 
+
     private double[][] dataDownload;
     private double[][] dataUpload;
+
+    //Polynomial regression down/up speed/file size
+    private double [] prdownspeed;
+    private double [] prupspeed;
+
+    private double [] prdownsize;
+    private double [] prupsize;
 
 
     @Override
@@ -73,19 +81,26 @@ public class SimpleRegressionActivity extends Activity {
                 Log.i("info", " model = " + dataModelList.get(i).toString());
                 dataDownload[i][0] = (double) dataModelList.get(i).getFileSize();
                 dataDownload[i][1] = (double) dataModelList.get(i).getDownloadSpeed();
+
+                prdownspeed[i] = (double) dataModelList.get(i).getDownloadSpeed();
+                prdownsize[i] = (double) dataModelList.get(i).getFileSize();
+
                 dataUpload[i][0] = (double) dataModelList.get(i).getFileSize();
                 dataUpload[i][1] = (double) dataModelList.get(i).getUploadSpeed();
+
+                prupspeed[i] = (double) dataModelList.get(i).getUploadSpeed();
+                prupsize[i] = (double) dataModelList.get(i).getFileSize();
             }
 
 
             downloadDataSimpleRegression.addData(dataDownload);
             uploadDataSimpleRegression.addData(dataUpload);
 
-            RealMatrix rmDown = new Array2DRowRealMatrix(dataDownload);
-            downloadDataPolynomialRegression = new PolynomialRegression(rmDown.getColumn(0), rmDown.getColumn(1), 2, "Download speed");
+            //RealMatrix rmDown = new Array2DRowRealMatrix(dataDownload);
+            downloadDataPolynomialRegression = new PolynomialRegression(prdownsize, prdownspeed, 2, "Download speed");
 
-            RealMatrix rmUp = new Array2DRowRealMatrix(dataUpload);
-            uploadDataPolynomialRegression = new PolynomialRegression(rmUp.getColumn(0), rmUp.getColumn(1), 2, "Upload speed");
+            //RealMatrix rmUp = new Array2DRowRealMatrix(dataUpload);
+            uploadDataPolynomialRegression = new PolynomialRegression(prupsize, prupspeed, 2, "Upload speed");
 
             calculate.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -116,24 +131,17 @@ public class SimpleRegressionActivity extends Activity {
             //editText.getText().append("Slope Std Err = " + Double.toString(uploadDataSimpleRegression.getSlopeStdErr()) + "\n");
             editText.getText().append("R squared = " + Double.toString(uploadDataSimpleRegression.getR()) + "\n");
             editText.getText().append("Predict = " + Double.toString(predict/(uploadDataSimpleRegression.predict(predict)*1000)));
-            //editText.getText().append("Predict = " + coeff[0] + "," + coeff[1] + "," + coeff[2] + "\n");
-            //editText.getText().append(observations.toString());
             editText.getText().append("\n" + "--------------------------------------------------------------" + "\n");
 
             editText.getText().append("Download data PR:" + "\n");
-            //editText.getText().append("Intercept = " + Double.toString(downloadDataSimpleRegression.getIntercept()) + "\n");
-            //editText.getText().append("Slope = " + Double.toString(downloadDataSimpleRegression.getSlope()) + "\n");
-            //editText.getText().append("Slope Std Err = " + Double.toString(downloadDataSimpleRegression.getSlopeStdErr()) + "\n");
             editText.getText().append("R squared = " + Double.toString(downloadDataPolynomialRegression.R2()) + "\n");
             editText.getText().append("Predict = " + Double.toString(predict/(downloadDataPolynomialRegression.predict(predict)*1000)));
             editText.getText().append("\n\n");
 
             editText.getText().append("Upload data PR:" + "\n");
-            //editText.getText().append("Intercept = " + Double.toString(uploadDataSimpleRegression.getIntercept()) + "\n");
-            //editText.getText().append("Slope = " + Double.toString(uploadDataSimpleRegression.getSlope()) + "\n");
-            //editText.getText().append("Slope Std Err = " + Double.toString(uploadDataSimpleRegression.getSlopeStdErr()) + "\n");
             editText.getText().append("R squared = " + Double.toString(uploadDataPolynomialRegression.R2()) + "\n");
             editText.getText().append("Predict = " + Double.toString(predict/(uploadDataPolynomialRegression.predict(predict)*1000)));
+            editText.getText().append("\n" + "--------------------------------------------------------------" + "\n");
         } catch (NumberFormatException e) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Error");

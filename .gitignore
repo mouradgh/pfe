@@ -24,3 +24,6 @@ local.properties
 
 # Android Studio captures folder
 captures/
+
+# idea folder
+.idea/
