@@ -40,5 +40,5 @@ dependencies {
     //compile 'org.apache.commons:commons-math:1.1'
     compile 'com.google.android.gms:play-services:+'
     compile 'com.github.PhilJay:MPAndroidChart:v2.1.5'
-    //compile 'gov.nist.math:jama:1.0.2'
+    compile 'gov.nist.math:jama:1.0.2'
 }
