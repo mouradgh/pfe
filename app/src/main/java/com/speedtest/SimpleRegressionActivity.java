@@ -14,22 +14,13 @@ import android.widget.TextView;
 
 import com.speedtest.FileUtils.FileUtils;
 import com.speedtest.model.DataModel;
+import com.speedtest.PolynomialRegression;
 
+import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.stat.regression.SimpleRegression;
-
-//import org.apache.commons.math3.stat.regression.SimpleRegression;
-
-import org.apache.commons.math3.*;
-import org.apache.commons.math3.optimization.fitting.PolynomialFitter;
-import org.apache.commons.math3.optimization.general.GaussNewtonOptimizer;
-import org.apache.commons.math3.util.CompositeFormat;
-import org.apache.commons.math3.fitting.WeightedObservedPoint;
-import org.apache.commons.math3.fitting.PolynomialCurveFitter;
+import org.apache.commons.math3.linear.Array2DRowRealMatrix;
 
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -46,15 +37,12 @@ public class SimpleRegressionActivity extends Activity {
     private SimpleRegression downloadDataSimpleRegression = new SimpleRegression();
     private SimpleRegression uploadDataSimpleRegression = new SimpleRegression();
 
+    private PolynomialRegression downloadDataPolynomialRegression;
+    private PolynomialRegression uploadDataPolynomialRegression;
+
     private double[][] dataDownload;
     private double[][] dataUpload;
 
-    //private WeightedObservedPoints observations = new WeightedObservedPoints();
-    private List<WeightedObservedPoint> observations = new LinkedList<>();
-    private WeightedObservedPoint tmpObsv=null;
-    //private Collection<WeightedObservedPoint> observations 
-
-    private double[] coeff=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +54,6 @@ public class SimpleRegressionActivity extends Activity {
         predictText = (TextView)findViewById(R.id.editText2);
         calculate = (Button)findViewById(R.id.button3);
         label = (TextView)findViewById(R.id.textView2);
-
-
 
         List<DataModel> dataModelList = FileUtils.ParseDataFile(this, FileUtils.GetRootPath(this) + FileUtils.CHECK_SPEED_RESULT_FILE);
 
@@ -89,17 +75,17 @@ public class SimpleRegressionActivity extends Activity {
                 dataDownload[i][1] = (double) dataModelList.get(i).getDownloadSpeed();
                 dataUpload[i][0] = (double) dataModelList.get(i).getFileSize();
                 dataUpload[i][1] = (double) dataModelList.get(i).getUploadSpeed();
-
-                tmpObsv = new WeightedObservedPoint(1.0, dataDownload[i][0], dataDownload[i][1]);
-                //tmpObsv.setWeight(1.0);
-                //tmpObsv.setX((double) dataModelList.get(i).getFileSize());
-                //tmpObsv.setY((double) dataModelList.get(i).getDownloadSpeed());
-
-                observations.add(tmpObsv);
             }
+
 
             downloadDataSimpleRegression.addData(dataDownload);
             uploadDataSimpleRegression.addData(dataUpload);
+
+            RealMatrix rmDown = new Array2DRowRealMatrix(dataDownload);
+            downloadDataPolynomialRegression = new PolynomialRegression(rmDown.getColumn(0), rmDown.getColumn(1), 2, "Download speed");
+
+            RealMatrix rmUp = new Array2DRowRealMatrix(dataUpload);
+            downloadDataPolynomialRegression = new PolynomialRegression(rmUp.getColumn(0), rmUp.getColumn(1), 2, "Upload speed");
 
             calculate.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -113,9 +99,6 @@ public class SimpleRegressionActivity extends Activity {
 
     private void CalculateRegression() {
         try {
-            PolynomialCurveFitter fitter = PolynomialCurveFitter.create(2);
-            coeff = fitter.fit(observations);
-
             double predict = Double.parseDouble(predictText.getText().toString());
 
             editText.getText().append("Predict value = " + Double.toString(predict) + "\n");
@@ -132,7 +115,7 @@ public class SimpleRegressionActivity extends Activity {
             editText.getText().append("Slope = " + Double.toString(uploadDataSimpleRegression.getSlope()) + "\n");
             editText.getText().append("Slope Std Err = " + Double.toString(uploadDataSimpleRegression.getSlopeStdErr()) + "\n");
             editText.getText().append("Predict = " + Double.toString(predict/(uploadDataSimpleRegression.predict(predict)*1000)));
-            editText.getText().append("Predict = " + coeff[0] + "," + coeff[1] + "," + coeff[2] + "\n");
+            //editText.getText().append("Predict = " + coeff[0] + "," + coeff[1] + "," + coeff[2] + "\n");
             //editText.getText().append(observations.toString());
             editText.getText().append("\n" + "--------------------------------------------------------------" + "\n");
         } catch (NumberFormatException e) {
