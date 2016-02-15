@@ -71,7 +71,7 @@ public class DataModel {
     @Override
     public String toString() {
         return fileName + "," + fileSize + "," + downloadSpeed + "," + uploadSpeed + "," + date + "," + time + "," + internetType + "," + latLng.latitude + ","
-                + latLng.longitude + "," + phoneName + "," + version;
+                + latLng.longitude + "," + phoneName + "," + version + "," + operator;
     }
 
     public static DataModel CalculateSpeedForParticularFile(String fileName, List<DataModel>dataModels) {
