@@ -7,6 +7,8 @@ package com.speedtest;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -44,7 +46,7 @@ public class MapView extends FragmentActivity implements OnMapReadyCallback {
         int color;
         List<DataModel> dataModelList = FileUtils.ParseDataFile(this, FileUtils.GetRootPath(this) + FileUtils.CHECK_SPEED_RESULT_FILE);
         LatLng loc=null;
-        // Adding marker for every location in the file
+        // Adding cirlces for every location in the file
         if (dataModelList != null && dataModelList.size() > 0) {
             for (DataModel dataModel : dataModelList) {
                 loc = dataModel.getLocation();
@@ -55,6 +57,7 @@ public class MapView extends FragmentActivity implements OnMapReadyCallback {
         }
         // setting the geolocation to true
         mMap.setMyLocationEnabled(true);
+        mMap.getUiSettings().setCompassEnabled(true);
 
     }
 
