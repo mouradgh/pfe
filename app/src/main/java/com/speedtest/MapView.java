@@ -55,8 +55,7 @@ public class MapView extends FragmentActivity implements OnMapReadyCallback {
             for (DataModel dataModel : dataModelList) {
                 loc = dataModel.getLocation();
                 Color = getColorSpeed(dataModel.getDownloadSpeed());
-                mMap.addMarker(new MarkerOptions().position(loc).title(dataModel.getConnectionType()+ " , " + dataModel.getOperator())
-                        .icon(BitmapDescriptorFactory.defaultMarker(Color)));
+                mMap.addMarker(new MarkerOptions().position(loc).icon(BitmapDescriptorFactory.defaultMarker(Color)));
             }
         }
         // setting the geolocation to true

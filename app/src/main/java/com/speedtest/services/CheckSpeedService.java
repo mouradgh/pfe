@@ -101,8 +101,12 @@ public class CheckSpeedService extends Service {
             for (int i = 0; i < repeat * files.length; i++) {
                 dataModelsList.add(new DataModel());
             }
+            String operator = " ";
             TelephonyManager  tm=(TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
             File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+            if(!tm.getNetworkOperatorName().isEmpty()){
+                operator = tm.getNetworkOperatorName();
+            }
             if (!path.exists())
                 path.mkdirs();
 
@@ -122,7 +126,7 @@ public class CheckSpeedService extends Service {
                     dataModelsList.get(i * repeat + repeatDownload).setLocation(latLng);
                     dataModelsList.get(i * repeat + repeatDownload).setPhoneName(getDeviceName());
                     dataModelsList.get(i * repeat + repeatDownload).setVersion(new String(Build.VERSION.RELEASE));
-                    dataModelsList.get(i * repeat + repeatDownload).setOperator(tm.getNetworkOperatorName());
+                    dataModelsList.get(i * repeat + repeatDownload).setOperator(operator);
                     repeatDownload += 1;
                 }while (repeatDownload < repeat);
                 repeatDownload = 0;
