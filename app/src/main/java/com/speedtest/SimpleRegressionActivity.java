@@ -16,9 +16,9 @@ import com.speedtest.FileUtils.FileUtils;
 import com.speedtest.model.DataModel;
 import com.speedtest.PolynomialRegression;
 
-//import org.apache.commons.math3.linear.RealMatrix;
+import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.stat.regression.SimpleRegression;
-//import org.apache.commons.math3.linear.Array2DRowRealMatrix;
+import org.apache.commons.math3.linear.Array2DRowRealMatrix;
 
 
 import java.util.List;
@@ -43,14 +43,6 @@ public class SimpleRegressionActivity extends Activity {
 
     private double[][] dataDownload;
     private double[][] dataUpload;
-
-    //Polynomial regression down/up speed/file size
-    private double [] prdownspeed;
-    private double [] prupspeed;
-
-    private double [] prdownsize;
-    private double [] prupsize;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,25 +74,19 @@ public class SimpleRegressionActivity extends Activity {
                 dataDownload[i][0] = (double) dataModelList.get(i).getFileSize();
                 dataDownload[i][1] = (double) dataModelList.get(i).getDownloadSpeed();
 
-                prdownspeed[i] = (double) dataModelList.get(i).getDownloadSpeed();
-                prdownsize[i] = (double) dataModelList.get(i).getFileSize();
-
                 dataUpload[i][0] = (double) dataModelList.get(i).getFileSize();
                 dataUpload[i][1] = (double) dataModelList.get(i).getUploadSpeed();
-
-                prupspeed[i] = (double) dataModelList.get(i).getUploadSpeed();
-                prupsize[i] = (double) dataModelList.get(i).getFileSize();
             }
 
 
             downloadDataSimpleRegression.addData(dataDownload);
             uploadDataSimpleRegression.addData(dataUpload);
 
-            //RealMatrix rmDown = new Array2DRowRealMatrix(dataDownload);
-            downloadDataPolynomialRegression = new PolynomialRegression(prdownsize, prdownspeed, 2, "Download speed");
+            RealMatrix rmDown = new Array2DRowRealMatrix(dataDownload);
+            downloadDataPolynomialRegression = new PolynomialRegression(rmDown.getColumn(0), rmDown.getColumn(1), 3, "Upload speed");
 
-            //RealMatrix rmUp = new Array2DRowRealMatrix(dataUpload);
-            uploadDataPolynomialRegression = new PolynomialRegression(prupsize, prupspeed, 2, "Upload speed");
+            RealMatrix rmUp = new Array2DRowRealMatrix(dataUpload);
+            uploadDataPolynomialRegression = new PolynomialRegression(rmUp.getColumn(0), rmUp.getColumn(1), 3, "Upload speed");
 
             calculate.setOnClickListener(new View.OnClickListener() {
                 @Override
