@@ -13,7 +13,6 @@ import android.widget.Button;
 
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.net.wifi.MonitorActivity;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.speedtest.services.CheckSpeedService;
