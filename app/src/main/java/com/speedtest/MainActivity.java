@@ -36,14 +36,6 @@ public class MainActivity extends Activity {
 	private ProgressDialog dialog;
 	public static String[] files = new String[] {"img5.jpg", "img4.jpg", "img3.jpg","img2.jpg", "img1.jpg"};
 
-	/*
-	private TelephonyManager telephonyManager;
-	private myPhoneStateListener psListener;
-	*/
-
-	TelephonyManager telephonyManager;
-	myPhoneStateListener psListener;
-	TextView txtSignalStr;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -84,11 +76,6 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		//Signal strength
-		txtSignalStr = (TextView)findViewById(R.id.signalStrength);
-		psListener = new myPhoneStateListener();
-		telephonyManager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
-		telephonyManager.listen(psListener, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
 	}
 
 
