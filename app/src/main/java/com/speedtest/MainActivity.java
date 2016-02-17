@@ -7,12 +7,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+
+import android.telephony.SignalStrength;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.speedtest.services.CheckSpeedService;
@@ -30,6 +34,11 @@ public class MainActivity extends Activity {
 
 	private ProgressDialog dialog;
 	public static String[] files = new String[] {"img5.jpg", "img4.jpg", "img3.jpg","img2.jpg", "img1.jpg"};
+
+	/*
+	private TelephonyManager telephonyManager;
+	private myPhoneStateListener psListener;
+	*/
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -102,12 +111,48 @@ public class MainActivity extends Activity {
 	}
 
 
-
+	//Wifi strength
 	public void onReceive(WifiManager wifiManager) {
 		int numberOfLevels=5;
 		WifiInfo wifiInfo = wifiManager.getConnectionInfo();
 		int level=WifiManager.calculateSignalLevel(wifiInfo.getRssi(), numberOfLevels);
 	}
+
+	//Cellular strength
+	/*
+	//Global Define
+	TelephonyManager telephonyManager;
+	myPhoneStateListener psListener;
+	TextView txtSignalStr;
+
+
+	//onCreate Method
+	@Override
+	protected void onCreate(final Bundle savedInstanceState) {
+ 	txtSignalStr = (TextView)findViewById(R.id.signalStrength);
+ 	psListener = new myPhoneStateListener();
+ 	telephonyManager = (TelephonyManager)getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+ 	telephonyManager.listen(psListener,PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
+	}
+
+	//Create myPhoneStateListener Class
+
+	public class myPhoneStateListener extends PhoneStateListener {
+		public int signalStrengthValue;
+
+		public void onSignalStrengthsChanged(SignalStrength signalStrength) {
+			super.onSignalStrengthsChanged(signalStrength);
+			if (signalStrength.isGsm()) {
+				if (signalStrength.getGsmSignalStrength() != 99)
+					signalStrengthValue = signalStrength.getGsmSignalStrength() * 2 - 113;
+				else
+					signalStrengthValue = signalStrength.getGsmSignalStrength();
+			} else {
+				signalStrengthValue = signalStrength.getCdmaDbm();
+			}
+		}
+	}
+	*/
 	
 	public void drawPlot(View v) {
 		Intent intent = new Intent(this, CheckSpeedService.class);

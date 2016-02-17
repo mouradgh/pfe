@@ -55,9 +55,13 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/speedtest/ScatterPlot.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+              <caret line="121" column="17" selection-start-line="121" selection-start-column="17" selection-end-line="121" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3207#3215#0" expanded="true" />
+                <element signature="e#3466#3473#0" expanded="true" />
+                <element signature="e#3528#3535#0" expanded="true" />
+                <element signature="e#4614#4630#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,9 +80,17 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/speedtest/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3251366">
-              <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
-              <folding />
+            <state vertical-scroll-proportion="0.56557375">
+              <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1403#2235#0" expanded="true" />
+                <element signature="e#2234#2235#0" expanded="true" />
+                <element signature="e#2257#2460#0" expanded="true" />
+                <element signature="e#2459#2460#0" expanded="true" />
+                <element signature="e#2522#2687#0" expanded="true" />
+                <element signature="e#2686#2687#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1821,10 +1833,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/speedtest/ScatterPlot.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/speedtest/FileUtils/FileUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/speedtest/model/DataModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/speedtest/ScatterPlot.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/speedtest/MainActivity.java" />
       </list>
     </option>
@@ -2075,7 +2087,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2123,6 +2135,10 @@
           <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3207#3215#0" expanded="true" />
+            <element signature="e#3466#3473#0" expanded="true" />
+            <element signature="e#3528#3535#0" expanded="true" />
+            <element signature="e#4614#4630#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2139,7 +2155,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="57" column="48" selection-start-line="57" selection-start-column="48" selection-end-line="57" selection-end-column="48" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1403#2235#0" expanded="true" />
+            <element signature="e#2234#2235#0" expanded="true" />
+            <element signature="e#2257#2460#0" expanded="true" />
+            <element signature="e#2459#2460#0" expanded="true" />
+            <element signature="e#2522#2687#0" expanded="true" />
+            <element signature="e#2686#2687#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2164,16 +2188,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="95" column="18" selection-start-line="95" selection-start-column="18" selection-end-line="95" selection-end-column="18" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/speedtest/ScatterPlot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2217,11 +2231,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/speedtest/ScatterPlot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="121" column="17" selection-start-line="121" selection-start-column="17" selection-end-line="121" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3207#3215#0" expanded="true" />
+            <element signature="e#3466#3473#0" expanded="true" />
+            <element signature="e#3528#3535#0" expanded="true" />
+            <element signature="e#4614#4630#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/speedtest/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3251366">
-          <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
-          <folding />
+        <state vertical-scroll-proportion="0.56557375">
+          <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1403#2235#0" expanded="true" />
+            <element signature="e#2234#2235#0" expanded="true" />
+            <element signature="e#2257#2460#0" expanded="true" />
+            <element signature="e#2459#2460#0" expanded="true" />
+            <element signature="e#2522#2687#0" expanded="true" />
+            <element signature="e#2686#2687#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
