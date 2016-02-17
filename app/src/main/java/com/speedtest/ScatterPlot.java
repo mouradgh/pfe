@@ -24,6 +24,9 @@ import com.github.mikephil.charting.data.ScatterData;
 import com.github.mikephil.charting.data.ScatterDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.renderer.LineChartRenderer;
+
 
 import com.speedtest.FileUtils.FileUtils;
 import com.speedtest.model.DataModel;
@@ -32,6 +35,8 @@ import com.speedtest.model.DataModel;
 public class ScatterPlot extends Activity {
 	
 	private ScatterChart mChart;
+
+    private LineChart lChart;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +121,12 @@ public class ScatterPlot extends Activity {
 
             mChart.setData(data);
             mChart.invalidate();
+
+
+            //Line chart
+
+
+
         }
 	}
 }

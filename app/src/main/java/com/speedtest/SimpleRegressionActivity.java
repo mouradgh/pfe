@@ -83,10 +83,10 @@ public class SimpleRegressionActivity extends Activity {
             uploadDataSimpleRegression.addData(dataUpload);
 
             RealMatrix rmDown = new Array2DRowRealMatrix(dataDownload);
-            downloadDataPolynomialRegression = new PolynomialRegression(rmDown.getColumn(0), rmDown.getColumn(1), 3, "Upload speed");
+            downloadDataPolynomialRegression = new PolynomialRegression(rmDown.getColumn(0), rmDown.getColumn(1), 2, "Download speed");
 
             RealMatrix rmUp = new Array2DRowRealMatrix(dataUpload);
-            uploadDataPolynomialRegression = new PolynomialRegression(rmUp.getColumn(0), rmUp.getColumn(1), 3, "Upload speed");
+            uploadDataPolynomialRegression = new PolynomialRegression(rmUp.getColumn(0), rmUp.getColumn(1), 2, "Upload speed");
 
             calculate.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -108,7 +108,7 @@ public class SimpleRegressionActivity extends Activity {
             //editText.getText().append("Slope = " + Double.toString(downloadDataSimpleRegression.getSlope()) + "\n");
             //editText.getText().append("Slope Std Err = " + Double.toString(downloadDataSimpleRegression.getSlopeStdErr()) + "\n");
             editText.getText().append("R squared = " + Double.toString(downloadDataSimpleRegression.getR()) + "\n");
-            editText.getText().append("Predict = " + Double.toString(predict/(downloadDataSimpleRegression.predict(predict)*1000)));
+            editText.getText().append("Predict = " + Double.toString(/* predict/( */ downloadDataSimpleRegression.predict(predict) /* *1000 )*/));
             editText.getText().append("\n\n");
 
             editText.getText().append("Upload data SR:" + "\n");
@@ -116,17 +116,17 @@ public class SimpleRegressionActivity extends Activity {
             //editText.getText().append("Slope = " + Double.toString(uploadDataSimpleRegression.getSlope()) + "\n");
             //editText.getText().append("Slope Std Err = " + Double.toString(uploadDataSimpleRegression.getSlopeStdErr()) + "\n");
             editText.getText().append("R squared = " + Double.toString(uploadDataSimpleRegression.getR()) + "\n");
-            editText.getText().append("Predict = " + Double.toString(predict/(uploadDataSimpleRegression.predict(predict)*1000)));
+            editText.getText().append("Predict = " + Double.toString(/* predict/( */ uploadDataSimpleRegression.predict(predict) /* *1000)*/ ));
             editText.getText().append("\n" + "--------------------------------------------------------------" + "\n");
 
             editText.getText().append("Download data PR:" + "\n");
             editText.getText().append("R squared = " + Double.toString(downloadDataPolynomialRegression.R2()) + "\n");
-            editText.getText().append("Predict = " + Double.toString(predict/(downloadDataPolynomialRegression.predict(predict)*1000)));
+            editText.getText().append("Predict = " + Double.toString( /*predict/( */ downloadDataPolynomialRegression.predict(predict) /* *1000)*/));
             editText.getText().append("\n\n");
 
             editText.getText().append("Upload data PR:" + "\n");
             editText.getText().append("R squared = " + Double.toString(uploadDataPolynomialRegression.R2()) + "\n");
-            editText.getText().append("Predict = " + Double.toString(predict/(uploadDataPolynomialRegression.predict(predict)*1000)));
+            editText.getText().append("Predict = " + Double.toString(/* predict/( */ uploadDataPolynomialRegression.predict(predict) /* *1000) */ ));
             editText.getText().append("\n" + "--------------------------------------------------------------" + "\n");
         } catch (NumberFormatException e) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);

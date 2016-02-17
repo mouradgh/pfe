@@ -2,6 +2,7 @@ package com.speedtest.model;
 
 import com.google.android.gms.maps.model.LatLng;
 
+
 import java.util.List;
 
 /**
@@ -18,6 +19,7 @@ public class DataModel {
     private LatLng latLng = new LatLng(0,0);
     private String phoneName = "";
     private String version = "";
+    private int strength = 0;
 
     public static String tableHeader = "File name, File size, Download speed, Upload speed, Date, Time, Connection type, Latitude, Longitude, Phone name, Android version";
 
@@ -54,6 +56,16 @@ public class DataModel {
     public void setVersion(String version) {
         this.version = version;
     }
+    /*
+    public void setStrength(int strength) {
+        int numberOfLevels = 5;
+        WifiManager m = (WifiManager) getSystemService(WIFI_SERVICE);
+        WifiInfo wifiInfo = m.getConnectionInfo();
+        int level = WifiManager.calculateSignalLevel(wifiInfo.getRssi(), numberOfLevels);
+        this.strength = level;
+    }
+    */
+
 
     // Getter
     public String getFileName() { return this.fileName; }
@@ -62,11 +74,12 @@ public class DataModel {
     public float getUploadSpeed() { return this.uploadSpeed; }
     public String getPhoneName() { return this.phoneName; }
     public String getVersion() { return this.version; }
+    public int getStrength() { return this.strength; }
 
     @Override
     public String toString() {
         return fileName + "," + fileSize + "," + downloadSpeed + "," + uploadSpeed + "," + date + "," + time + "," + internetType + "," + latLng.latitude + ","
-                + latLng.longitude + "," + phoneName + "," + version;
+                + latLng.longitude + "," + phoneName + "," + version + "," + strength;
     }
 
     public static DataModel CalculateSpeedForParticularFile(String fileName, List<DataModel>dataModels) {

@@ -93,6 +93,7 @@ public final class FileUtils {
                 double lng = Double.parseDouble(parseData[8]);
                 dataModel.setPhoneName(parseData[9]);
                 dataModel.setVersion(parseData[10]);
+                //dataModel.setStrength(Double.parseDouble(parseData[11]));
 
                 dataModel.setLocation(new LatLng(lat, lng));
                 dataModelList.add(dataModel);

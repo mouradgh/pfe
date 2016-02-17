@@ -11,6 +11,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.net.wifi.MonitorActivity;
+
 import com.google.android.gms.maps.model.LatLng;
 import com.speedtest.services.CheckSpeedService;
 import com.speedtest.services.LocationService;
@@ -84,7 +88,7 @@ public class MainActivity extends Activity {
 		IntentFilter intentFilter = new IntentFilter(LocationService.LOCATION_CHANGE_BROADCAST_RECEIVER);
 		registerReceiver(locationChange, intentFilter);
 
-		Log.i("info"," LOCATION : " + latLng.toString());
+		Log.i("info", " LOCATION : " + latLng.toString());
 	}
 
 	@Override
@@ -94,11 +98,17 @@ public class MainActivity extends Activity {
 			unregisterReceiver(broadcastReceiver);
 
 		// Stop Location service
-		stopService(new Intent(getApplicationContext(),LocationService.class));
+		stopService(new Intent(getApplicationContext(), LocationService.class));
 		unregisterReceiver(locationChange);
 	}
 
 
+
+	public void onReceive(WifiManager wifiManager) {
+		int numberOfLevels=5;
+		WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+		int level=WifiManager.calculateSignalLevel(wifiInfo.getRssi(), numberOfLevels);
+	}
 	
 	public void drawPlot(View v) {
 		Intent intent = new Intent(this, CheckSpeedService.class);
