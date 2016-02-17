@@ -12,6 +12,7 @@
     <string name="title_activity_map_view">Map View</string>
     <string name="file_size">File Size (bytes)</string>
     <string name="upload_speed">Upload Speed (kb/s)</string>
+    <string name="download_speed">Download Speed (kb/s)</string>
     <string name="NET_3G">3G</string>
     <string name="NET_4G">4G</string>
     <string name="NET_WIFI">WIFI</string>
