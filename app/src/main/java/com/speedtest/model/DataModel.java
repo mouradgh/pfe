@@ -20,8 +20,9 @@ public class DataModel {
     private String phoneName = "";
     private String version = "";
     private int strength = 0;
-
-    public static String tableHeader = "File name, File size, Download speed, Upload speed, Date, Time, Connection type, Latitude, Longitude, Phone name, Android version";
+    private String signalStrengthWifi="0";
+    private String signalStrengthGSM="0";
+    public static String tableHeader = "File name, File size, Download speed, Upload speed, Date, Time, Connection type, Latitude, Longitude, Phone name, Android version,GSM Strength,Wifi Strength";
 
     public DataModel() {}
 
@@ -53,9 +54,9 @@ public class DataModel {
     public void setPhoneName(String phoneName) {
         this.phoneName = phoneName;
     }
-    public void setVersion(String version) {
-        this.version = version;
-    }
+    public void setVersion(String version) {this.version = version;}
+    public void setSignalStrengthWifi(String signalStrengthWifi){this.signalStrengthWifi=signalStrengthWifi;}
+    public void setSignalStrengthGSM(String signalStrengthGSM){this.signalStrengthGSM=signalStrengthGSM;}
     /*
     public void setStrength(int strength) {
         int numberOfLevels = 5;
@@ -79,7 +80,7 @@ public class DataModel {
     @Override
     public String toString() {
         return fileName + "," + fileSize + "," + downloadSpeed + "," + uploadSpeed + "," + date + "," + time + "," + internetType + "," + latLng.latitude + ","
-                + latLng.longitude + "," + phoneName + "," + version + "," + strength;
+                + latLng.longitude + "," + phoneName + "," + version + "," +signalStrengthGSM+"," +signalStrengthWifi;
     }
 
     public static DataModel CalculateSpeedForParticularFile(String fileName, List<DataModel>dataModels) {
