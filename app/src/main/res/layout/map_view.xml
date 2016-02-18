@@ -1,4 +1,4 @@
-<FrameLayout
+<FrameLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -10,33 +10,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-        <RadioGroup
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="134dp">
+
+        <RadioButton
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:text="@string/NET_3G"
+            android:id="@+id/radioButton"
+            android:onClick="onRadioButtonClicked"/>
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/NET_3G"
-                android:id="@+id/radioButton"
-                android:onClick="onRadioButtonClicked"/>
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/NET_4G"
-                android:id="@+id/radioButton2"
-                android:onClick="onRadioButtonClicked" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/NET_4G"
+            android:id="@+id/radioButton2"
+            android:onClick="onRadioButtonClicked" />
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/NET_WIFI"
-                android:id="@+id/radioButton3"
-                android:onClick="onRadioButtonClicked" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/NET_WIFI"
+            android:id="@+id/radioButton3"
+            android:onClick="onRadioButtonClicked" />
 
-        </RadioGroup>
-
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/NET_ALL"
+            android:id="@+id/radioButton4"
+            android:onClick="onRadioButtonClicked"/>
+    </RadioGroup>
 
 
 </FrameLayout>

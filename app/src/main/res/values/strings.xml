@@ -16,5 +16,6 @@
     <string name="NET_3G">3G</string>
     <string name="NET_4G">4G</string>
     <string name="NET_WIFI">WIFI</string>
+    <string name="NET_ALL">All</string>
 
 </resources>
