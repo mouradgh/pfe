@@ -25,6 +25,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.TileOverlay;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.google.android.gms.maps.model.TileProvider;
+import com.google.maps.android.heatmaps.Gradient;
 import com.google.maps.android.heatmaps.WeightedLatLng;
 import com.speedtest.FileUtils.FileUtils;
 import com.speedtest.model.DataModel;
@@ -44,6 +45,18 @@ public class MapView extends FragmentActivity implements OnMapReadyCallback {
     int RED=0x50FF0000;
     int YELLOW=0x50FFFF00;
     int GREEN=0x5000FF00;
+    // Creating the gradient.
+    int[] colors = {
+            Color.rgb(102, 225, 0), // green
+            Color.rgb(255, 0, 0)    // red
+    };
+
+    float[] startPoints = {
+            0.02f, 1f
+    };
+
+    Gradient gradient = new Gradient(colors, startPoints);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +82,7 @@ public class MapView extends FragmentActivity implements OnMapReadyCallback {
         // Create a heat map tile provider
         mProvider = new HeatmapTileProvider.Builder()
                 .weightedData(ListWeightedLoc)
+                .gradient(gradient)
                 .build();
         // Add a tile overlay to the map, using the heat map tile provider.
         mOverlay = mMap.addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
