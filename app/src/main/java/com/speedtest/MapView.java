@@ -8,12 +8,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.RadioButton;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.TileOverlay;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.google.maps.android.heatmaps.Gradient;
@@ -26,6 +28,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MapView extends FragmentActivity implements OnMapReadyCallback {
+    final String NET_3G = "3G";
+    final String NET_4G = "4G";
+    final String NET_WIFI = "WIFI";
+    final String NET_ALL = "ALL";
     private GoogleMap mMap;
     private HeatmapTileProvider mProvider;
     private TileOverlay mOverlay;
@@ -51,6 +57,48 @@ public class MapView extends FragmentActivity implements OnMapReadyCallback {
         dataModelList = FileUtils.ParseDataFile(this, FileUtils.GetRootPath(this) + FileUtils.CHECK_SPEED_RESULT_FILE);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        // Spinner element
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
+        // Spinner click listener
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // On selecting a spinner item
+                String item = parent.getItemAtPosition(position).toString();
+                if (item.equals(NET_3G))
+                    AddHeatMAP(NET_3G);
+                else if (item.equals(NET_4G))
+                    AddHeatMAP(NET_4G);
+                else if (item.equals(NET_WIFI))
+                    AddHeatMAP(NET_WIFI);
+                else AddHeatMAP(NET_ALL);
+                // Showing selected spinner item
+                Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<>();
+        categories.add(NET_3G);
+        categories.add(NET_4G);
+        categories.add(NET_WIFI);
+        categories.add(NET_ALL);
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
     }
 
     @Override
@@ -58,17 +106,15 @@ public class MapView extends FragmentActivity implements OnMapReadyCallback {
         mMap = googleMap;
         // Adding the heatmap
         if (dataModelList != null && dataModelList.size() > 0) {
-                AddHeatMAP(dataModelList, "");
+                AddHeatMAP(NET_ALL);
         }
         // setting the geolocation to true
         mMap.setMyLocationEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
     }
 
-
-
-    private void AddHeatMAP(List<DataModel> dataModelList, String type){
-        if (type.isEmpty()){
+    public void AddHeatMAP(String type){
+        if (type.equals(NET_ALL)){
             if(mOverlay!=null){
                 mOverlay.remove();
                 ListWeightedLoc.clear();
@@ -120,34 +166,5 @@ public class MapView extends FragmentActivity implements OnMapReadyCallback {
         else
             Color = 1000;
         return Color;
-    }
-
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.radioButton:
-                if (checked) {
-                    mMap.clear();
-                    AddHeatMAP(dataModelList, "3G");
-                }
-                    break;
-            case R.id.radioButton2:
-                if (checked) {
-                    AddHeatMAP(dataModelList, "4G");
-                }
-                    break;
-            case R.id.radioButton3:
-                if (checked) {
-                    AddHeatMAP(dataModelList, "WIFI");
-                }
-                break;
-            case R.id.radioButton4:
-                if (checked) {
-                    AddHeatMAP(dataModelList, "");
-                }
-                break;
-        }
     }
 }
