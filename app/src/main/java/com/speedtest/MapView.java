@@ -8,23 +8,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
-
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.TileOverlay;
 import com.google.android.gms.maps.model.TileOverlayOptions;
-import com.google.android.gms.maps.model.TileProvider;
 import com.google.maps.android.heatmaps.Gradient;
 import com.google.maps.android.heatmaps.WeightedLatLng;
 import com.speedtest.FileUtils.FileUtils;
@@ -32,7 +23,6 @@ import com.speedtest.model.DataModel;
 import com.google.maps.android.heatmaps.HeatmapTileProvider;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class MapView extends FragmentActivity implements OnMapReadyCallback {
@@ -41,20 +31,16 @@ public class MapView extends FragmentActivity implements OnMapReadyCallback {
     private TileOverlay mOverlay;
     private ArrayList <WeightedLatLng> ListWeightedLoc= new ArrayList<>();
     List<DataModel> dataModelList;
-    int BLUE = 0x500000FF; //transparency fixed to 50%
-    int RED=0x50FF0000;
-    int YELLOW=0x50FFFF00;
-    int GREEN=0x5000FF00;
+    int intensity;
     // Creating the gradient.
     int[] colors = {
             Color.rgb(102, 225, 0), // green
-            Color.rgb(255, 0, 0)    // red
+            Color.rgb(255, 255, 0),    // yellow
+            Color.rgb(225, 0, 0)    // red
     };
-
-    float[] startPoints = {
-            0.02f, 1f
+    float[] startPoints = { // starting point for each color, given as a percentage of the maximum intensity
+            0.01f, 0.02f, 0.03f
     };
-
     Gradient gradient = new Gradient(colors, startPoints);
 
 
@@ -70,23 +56,10 @@ public class MapView extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        int i=10;
-        // Adding circles for every location in the file
+        // Adding the heatmap
         if (dataModelList != null && dataModelList.size() > 0) {
-            //AddCirclesToMAP(dataModelList, "");
-            for (DataModel dataModel : dataModelList) {
-                ListWeightedLoc.add(new WeightedLatLng(dataModel.getLocation(),i));
-                i+=10;
-            }
+                AddHeatMAP(dataModelList, "");
         }
-        // Create a heat map tile provider
-        mProvider = new HeatmapTileProvider.Builder()
-                .weightedData(ListWeightedLoc)
-                .gradient(gradient)
-                .build();
-        // Add a tile overlay to the map, using the heat map tile provider.
-        mOverlay = mMap.addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
-
         // setting the geolocation to true
         mMap.setMyLocationEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
@@ -94,25 +67,45 @@ public class MapView extends FragmentActivity implements OnMapReadyCallback {
 
 
 
-    private void AddCirclesToMAP(List<DataModel> dataModelList, String type){
-        int color;
-        LatLng loc;
+    private void AddHeatMAP(List<DataModel> dataModelList, String type){
         if (type.isEmpty()){
-            mMap.clear();
+            if(mOverlay!=null){
+                mOverlay.remove();
+                ListWeightedLoc.clear();
+            }
             for (DataModel dataModel : dataModelList) {
-                loc = dataModel.getLocation();
-                color = getColorSpeed(dataModel.getDownloadSpeed());
-                mMap.addCircle(new CircleOptions().center(loc).fillColor(color).radius(5.0).strokeColor(Color.TRANSPARENT));
+                intensity = getColorSpeed(dataModel.getDownloadSpeed());
+                ListWeightedLoc.add(new WeightedLatLng(dataModel.getLocation(), intensity));
+            }
+            if(!ListWeightedLoc.isEmpty()) {
+                // Create a heat map tile provider
+                mProvider = new HeatmapTileProvider.Builder()
+                        .weightedData(ListWeightedLoc)
+                        .gradient(gradient)
+                        .build();
+                // Add a tile overlay to the map, using the heat map tile provider.
+                mOverlay = mMap.addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
             }
         }
         else{
-            mMap.clear();
+            if(mOverlay!=null) {
+                mOverlay.remove();
+                ListWeightedLoc.clear();
+            }
             for (DataModel dataModel : dataModelList) {
                 if (dataModel.getConnectionType().contains(type)) {
-                    loc = dataModel.getLocation();
-                    color = getColorSpeed(dataModel.getDownloadSpeed());
-                    mMap.addCircle(new CircleOptions().center(loc).fillColor(color).radius(5.0).strokeColor(Color.TRANSPARENT));
+                    intensity = getColorSpeed(dataModel.getDownloadSpeed());
+                    ListWeightedLoc.add(new WeightedLatLng(dataModel.getLocation(), intensity));
                 }
+            }
+            if(!ListWeightedLoc.isEmpty()) {
+                // Create a heat map tile provider
+                mProvider = new HeatmapTileProvider.Builder()
+                        .weightedData(ListWeightedLoc)
+                        .gradient(gradient)
+                        .build();
+                // Add a tile overlay to the map, using the heat map tile provider.
+                mOverlay = mMap.addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
             }
         }
 
@@ -120,45 +113,39 @@ public class MapView extends FragmentActivity implements OnMapReadyCallback {
     // getting the color according to the download speed
     private int getColorSpeed(float downloadSpeed) {
         int Color;
-        if(downloadSpeed < 300.0)
-            Color = RED;
-        else if(downloadSpeed < 800.0)
-            Color =YELLOW;
+        if(downloadSpeed < 500.0)
+            Color = 1;
         else if(downloadSpeed < 1200.0)
-            Color = BLUE;
+            Color =20;
         else
-            Color = GREEN;
+            Color = 1000;
         return Color;
     }
 
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
-
         // Check which radio button was clicked
         switch(view.getId()) {
             case R.id.radioButton:
                 if (checked) {
                     mMap.clear();
-                    AddCirclesToMAP(dataModelList, "3G");
+                    AddHeatMAP(dataModelList, "3G");
                 }
                     break;
             case R.id.radioButton2:
                 if (checked) {
-                    mMap.clear();
-                    AddCirclesToMAP(dataModelList, "4G");
+                    AddHeatMAP(dataModelList, "4G");
                 }
                     break;
             case R.id.radioButton3:
                 if (checked) {
-                    mMap.clear();
-                    AddCirclesToMAP(dataModelList, "WIFI");
+                    AddHeatMAP(dataModelList, "WIFI");
                 }
                 break;
             case R.id.radioButton4:
                 if (checked) {
-                    mMap.clear();
-                    AddCirclesToMAP(dataModelList, "");
+                    AddHeatMAP(dataModelList, "");
                 }
                 break;
         }
