@@ -22,6 +22,10 @@ import com.speedtest.FileUtils.FileUtils;
 import com.speedtest.common.InternetConnectionType;
 import com.speedtest.model.DataModel;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -36,6 +40,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -61,6 +66,7 @@ public class CheckSpeedService extends Service {
     private LatLng latLng;
     private ExecutorService executorService = null;
 
+    private JSONObject geoJSON;
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -133,6 +139,31 @@ public class CheckSpeedService extends Service {
         }, new IntentFilter(WifiManager.RSSI_CHANGED_ACTION));
 
 
+        try {
+
+            JSONArray arrayPoints = new JSONArray();
+            arrayPoints.put(latLng.longitude);
+            arrayPoints.put(latLng.latitude);
+
+            JSONObject typePoint = new JSONObject();
+            typePoint.put("type","Point");
+            typePoint.put("coordinates",(Object)arrayPoints);
+
+            JSONObject properties = new JSONObject();
+            properties.put("name","Location");
+
+            JSONObject typeFeature = new JSONObject();
+            typeFeature.put("type","Feature");
+            typeFeature.put("geometry",(Object)typePoint);
+            typeFeature.put("properties",(Object)properties);
+
+            this.geoJSON = typeFeature;
+
+            Log.i("info","  " + typeFeature.toString());
+            Log.i("info","  " + typePoint.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         executorService.execute(new CheckSpeedTask(files, repeat, startId));
 
@@ -181,6 +212,10 @@ public class CheckSpeedService extends Service {
                     dataModelsList.get(i * repeat + repeatDownload).setPhoneName(getDeviceName());
                     dataModelsList.get(i * repeat + repeatDownload).setSignalStrengthWifi(wifiStrength);
                     dataModelsList.get(i * repeat + repeatDownload).setSignalStrengthGSM(gsmStrength);
+
+                    if (geoJSON != null) {
+                        dataModelsList.get(i * repeat + repeatDownload).setGeoJSON(geoJSON.toString());
+                    }
 
                     repeatDownload += 1;
                 }while (repeatDownload < repeat);

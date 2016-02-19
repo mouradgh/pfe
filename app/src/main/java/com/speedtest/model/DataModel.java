@@ -22,6 +22,8 @@ public class DataModel {
     private int strength = 0;
     private String signalStrengthWifi="0";
     private String signalStrengthGSM="0";
+    private String geoJSON = "";
+
     public static String tableHeader = "File name, File size, Download speed, Upload speed, Date, Time, Connection type, Latitude, Longitude, Phone name, Android version,GSM Strength,Wifi Strength";
 
     public DataModel() {}
@@ -57,6 +59,7 @@ public class DataModel {
     public void setVersion(String version) {this.version = version;}
     public void setSignalStrengthWifi(String signalStrengthWifi){this.signalStrengthWifi=signalStrengthWifi;}
     public void setSignalStrengthGSM(String signalStrengthGSM){this.signalStrengthGSM=signalStrengthGSM;}
+    public void setGeoJSON(String geoJSON) { this.geoJSON = geoJSON; }
     /*
     public void setStrength(int strength) {
         int numberOfLevels = 5;
@@ -76,11 +79,12 @@ public class DataModel {
     public String getPhoneName() { return this.phoneName; }
     public String getVersion() { return this.version; }
     public int getStrength() { return this.strength; }
+    public String getGeoJSON() { return this.geoJSON; }
 
     @Override
     public String toString() {
         return fileName + "," + fileSize + "," + downloadSpeed + "," + uploadSpeed + "," + date + "," + time + "," + internetType + "," + latLng.latitude + ","
-                + latLng.longitude + "," + phoneName + "," + version + "," +signalStrengthGSM+"," +signalStrengthWifi;
+                + latLng.longitude + "," + phoneName + "," + version + "," +signalStrengthGSM+"," +signalStrengthWifi + "," + geoJSON;
     }
 
     public static DataModel CalculateSpeedForParticularFile(String fileName, List<DataModel>dataModels) {
