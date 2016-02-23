@@ -14,12 +14,16 @@ import android.widget.TextView;
 //import com.github.mikephil.charting.*;
 
 
+import com.github.mikephil.charting.charts.CombinedChart;
 import com.github.mikephil.charting.charts.ScatterChart;
 import com.github.mikephil.charting.charts.ScatterChart.ScatterShape;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.Legend.LegendPosition;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.CombinedData;
 import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.ScatterData;
 import com.github.mikephil.charting.data.ScatterDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
@@ -33,10 +37,6 @@ import com.speedtest.model.DataModel;
 
 
 public class ScatterPlot extends Activity {
-	
-	private ScatterChart mChart;
-
-    private LineChart lChart;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,26 +58,26 @@ public class ScatterPlot extends Activity {
 
             dataModels = new DataModel[] { dataModelFile1, dataModelFile2, dataModelFile3, dataModelFile4, dataModelFile5 };
 
-            mChart = (ScatterChart) findViewById(R.id.chart1);
-            mChart.setDescription("");
+            CombinedChart ch = (CombinedChart)findViewById(R.id.chart1);
+            ch.setDescription("");
 
-            mChart.setDrawGridBackground(false);
+            ch.setDrawGridBackground(false);
 
-            mChart.setTouchEnabled(true);
+            ch.setTouchEnabled(true);
 
             // enable scaling and dragging
-            mChart.setDragEnabled(true);
-            mChart.setScaleEnabled(true);
+            ch.setDragEnabled(true);
+            ch.setScaleEnabled(true);
 
-            mChart.setMaxVisibleValueCount(100);
-            mChart.setPinchZoom(true);
+            ch.setMaxVisibleValueCount(100);
+            ch.setPinchZoom(true);
 
-            Legend l = mChart.getLegend();
+            Legend l = ch.getLegend();
             l.setPosition(LegendPosition.BELOW_CHART_RIGHT);
 
-            mChart.getAxisRight().setEnabled(false);
+            ch.getAxisRight().setEnabled(false);
 
-            XAxis xl = mChart.getXAxis();
+            XAxis xl = ch.getXAxis();
             xl.setDrawGridLines(true);
 
             //SharedPreferences sp = getSharedPreferences("session", Context.MODE_PRIVATE);
@@ -90,12 +90,17 @@ public class ScatterPlot extends Activity {
             ArrayList<Entry> yVals1 = new ArrayList<Entry>();
             ArrayList<Entry> yVals2 = new ArrayList<Entry>();
 
+            ArrayList<Entry> line1 = new ArrayList<Entry>();
+            ArrayList<Entry> line2 = new ArrayList<Entry>();
+
             for (int i = 0; i < 5; i++) {
+                line1.add(new Entry(dataModels[i].getDownloadSpeed(), i));
                 //yVals1.add(new Entry(sp.getFloat("download"+(i+1), 0), i));
                 yVals1.add(new Entry(dataModels[i].getDownloadSpeed(), i));
             }
 
             for (int i = 0; i < 5; i++) {
+                line2.add(new Entry(dataModels[i].getUploadSpeed(), i));
                 //yVals2.add(new Entry(sp.getFloat("upload"+(i+1), 0), i));
                 //Entry entry = new Entry(dataModels[i].getUploadSpeed(),i);
                 yVals2.add(new Entry(dataModels[i].getUploadSpeed(), i));
@@ -108,25 +113,33 @@ public class ScatterPlot extends Activity {
             ScatterDataSet set2 = new ScatterDataSet(yVals2, "Upload");
             set2.setScatterShape(ScatterShape.TRIANGLE);
             set2.setColor(ColorTemplate.COLORFUL_COLORS[1]);
-
             set1.setScatterShapeSize(8f);
             set2.setScatterShapeSize(8f);
+
+
+            LineDataSet lineSet1 = new LineDataSet(line1, "Download");
+            lineSet1.setColor(ColorTemplate.COLORFUL_COLORS[0]);
+            LineDataSet lineSet2 = new LineDataSet(line2, "Upload");
+            lineSet2.setColor(ColorTemplate.COLORFUL_COLORS[1]);
+
 
             ArrayList<ScatterDataSet> dataSets = new ArrayList<ScatterDataSet>();
             dataSets.add(set1); // add the datasets
             dataSets.add(set2);
 
+            ArrayList<LineDataSet> lineSets = new ArrayList<LineDataSet>();
+            lineSets.add(lineSet1); // add the datasets
+            lineSets.add(lineSet2);
+
             // create a data object with the datasets
-            ScatterData data = new ScatterData(xVals, dataSets);
+            ScatterData data1 = new ScatterData(xVals, dataSets);
+            LineData data2 = new LineData(xVals, lineSets);
+            CombinedData cd = new CombinedData(xVals);
+            cd.setData(data1);
+            cd.setData(data2);
 
-            mChart.setData(data);
-            mChart.invalidate();
-
-
-            //Line chart
-
-
-
+            ch.setData(cd);
+            ch.invalidate();
         }
 	}
 }
