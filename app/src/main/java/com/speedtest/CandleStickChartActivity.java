@@ -1,12 +1,24 @@
 package com.speedtest;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ClipData;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.text.ClipboardManager;
+import android.text.method.ScrollingMovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.apache.commons.math3.stat.descriptive.*;
 
 //import com.github.mikephil.charting.*;
 
@@ -36,17 +48,20 @@ import com.speedtest.model.DataModel;
 
 
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Created by Admin on 1/7/16.
  */
 public class CandleStickChartActivity extends Activity {
-    private CandleStickChart mChart;
-    private SeekBar mSeekBarX, mSeekBarY;
-    private TextView tvX, tvY;
+
+    String data_str_upload,data_str_download;
+
+    List<DataModel> dataModelList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +71,10 @@ public class CandleStickChartActivity extends Activity {
         setContentView(R.layout.candlechart_layout);
 
 
-        List<DataModel> dataModelList = FileUtils.ParseDataFile(this,FileUtils.GetRootPath(this) + FileUtils.CHECK_SPEED_RESULT_FILE);
+        dataModelList = FileUtils.ParseDataFile(this, FileUtils.GetRootPath(this) + FileUtils.CHECK_SPEED_RESULT_FILE);
         DataModel[] dataModels;
 
-        if(dataModelList != null && dataModelList.size() > 0) {
+        if (dataModelList != null && dataModelList.size() > 0) {
             DataModel dataModelFile1 = DataModel.CalculateSpeedForParticularFile(MainActivity.files[0], dataModelList);
             DataModel dataModelFile2 = DataModel.CalculateSpeedForParticularFile(MainActivity.files[1], dataModelList);
             DataModel dataModelFile3 = DataModel.CalculateSpeedForParticularFile(MainActivity.files[2], dataModelList);
@@ -67,95 +82,87 @@ public class CandleStickChartActivity extends Activity {
             DataModel dataModelFile5 = DataModel.CalculateSpeedForParticularFile(MainActivity.files[4], dataModelList);
 
             dataModels = new DataModel[]{dataModelFile1, dataModelFile2, dataModelFile3, dataModelFile4, dataModelFile5};
-
-            mChart = (CandleStickChart) findViewById(R.id.chart1);
-            mChart.setDescription("");
-            mChart.setMaxVisibleValueCount(100);
-            mChart.setPinchZoom(false);
-            mChart.setDrawGridBackground(false);
-
-
-
-            XAxis xAxis = mChart.getXAxis();
-            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-            xAxis.setSpaceBetweenLabels(2);
-            xAxis.setDrawGridLines(true);
-
-            YAxis leftAxis = mChart.getAxisLeft();
-
-            leftAxis.setDrawGridLines(false);
-
-
-            YAxis rightAxis = mChart.getAxisRight();
-            rightAxis.setEnabled(false);
-
-            mChart.getLegend().setEnabled(false);
-
-             Legend l = mChart.getLegend();
-             l.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
-             l.setFormSize(8f);
-             l.setFormToTextSpace(4f);
-             l.setXEntrySpace(6f);
-
-            mChart.getAxisRight().setEnabled(false);
-
-            mChart.resetTracking();
-
-            ArrayList<CandleEntry> yVals1 = new ArrayList<CandleEntry>();
-            ArrayList<CandleEntry> yVals2 = new ArrayList<CandleEntry>();
-
-            for (int i = 0; i < 5; i++) {
-                yVals1.add(new CandleEntry(i,
-                        dataModels[i].getDownloadSpeed() + 10,
-                        dataModels[i].getDownloadSpeed() -20,
-                        dataModels[i].getDownloadSpeed(),
-                        dataModels[i].getDownloadSpeed() - 10)
-                );
-            }
-
-            for (int i = 0; i < 5; i++) {
-                yVals2.add(new CandleEntry(i,
-                        dataModels[i].getUploadSpeed() + 10,
-                        dataModels[i].getUploadSpeed() - 20,
-                        dataModels[i].getUploadSpeed(),
-                        dataModels[i].getUploadSpeed() - 10)
-                );
-            }
-
-            ArrayList<String> xVals = new ArrayList<String>();
-            for (int i = 0; i < 5; i++) {
-                xVals.add((dataModels[i].getFileSize() / 1024) + " kb");
-            }
-
-            CandleDataSet set1 = new CandleDataSet(yVals1, "Download");
-            set1.setAxisDependency(YAxis.AxisDependency.LEFT);
-
-            set1.setShadowColor(Color.RED);
-            set1.setShadowWidth(0.7f);
-            set1.setDecreasingColor(Color.RED);
-            set1.setDecreasingPaintStyle(Paint.Style.STROKE);
-            set1.setIncreasingColor(Color.rgb(255, 0, 0));
-            set1.setIncreasingPaintStyle(Paint.Style.STROKE);
-
-
-            CandleDataSet set2 = new CandleDataSet(yVals2, "Upload");
-            set2.setAxisDependency(YAxis.AxisDependency.LEFT);
-
-            set2.setShadowColor(Color.BLUE);
-            set2.setShadowWidth(0.5f);
-            set2.setDecreasingColor(Color.BLUE);
-            set2.setDecreasingPaintStyle(Paint.Style.STROKE);
-            set2.setIncreasingColor(Color.rgb(0, 0, 255));
-            set2.setIncreasingPaintStyle(Paint.Style.STROKE);
-
-            List<CandleDataSet> candleDataSets = new ArrayList<>();
-            candleDataSets.add(set1);
-            candleDataSets.add(set2);
-
-            CandleData data = new CandleData(xVals, candleDataSets);
-
-            mChart.setData(data);
-            mChart.invalidate();
         }
+
+        DescriptiveStatistics stat = new DescriptiveStatistics();
+
+        Double max, min, average, Q1, Q3, IQR, LowerWhisker, UpperWhisker;
+        DecimalFormat formatter=new DecimalFormat();
+        formatter.setMaximumFractionDigits(2);
+        try {
+
+            //-----Download Calculation
+            for (int i = 0; i < dataModelList.size(); i++)
+                stat.addValue(Double.parseDouble(dataModelList.get(i).toString().split(",")[2].toString()));
+
+            max = stat.getMax();
+            min = stat.getMin();
+            average = stat.getMean();
+            Q1 = stat.getPercentile(25.0);
+            Q3 = stat.getPercentile(75.0);
+            IQR = Q3 - Q1;
+            LowerWhisker = Q1 - (1.5 * IQR);
+            UpperWhisker = Q3 + (1.5 * IQR);
+
+
+
+            data_str_download = "Maximum : " + formatter.format(max) + "\nMinimum : " + formatter.format(min) + "\nMean : " + formatter.format(average) + "\nQ1 : " + formatter.format(Q1) + "\nQ3 : " + formatter.format(Q3) + "\nIQR : " + formatter.format(IQR) + "\nLowerWhisker : " + formatter.format(LowerWhisker) + "\nUpperWhisker : " + formatter.format(UpperWhisker);
+
+            //--------Upload Calculation
+            stat.clear();
+            for (int i = 0; i < dataModelList.size(); i++)
+                stat.addValue(Double.parseDouble(dataModelList.get(i).toString().split(",")[3].toString()));
+
+            max = stat.getMax();
+            min = stat.getMin();
+            average = stat.getMean();
+            Q1 = stat.getPercentile(25.0);
+            Q3 = stat.getPercentile(75.0);
+            IQR = Q3 - Q1;
+            LowerWhisker = Q1 - (1.5 * IQR);
+            UpperWhisker = Q3 + (1.5 * IQR);
+
+            data_str_upload = "Maximum : " + formatter.format(max) + "\nMinimum : " + formatter.format(min) + "\nMean : " + formatter.format(average) + "\nQ1 : " + formatter.format(Q1) + "\nQ3 : " + formatter.format(Q3) + "\nIQR : " + formatter.format(IQR) + "\nLowerWhisker : " + formatter.format(LowerWhisker) + "\nUpperWhisker : " + formatter.format(UpperWhisker);
+
+            final TextView data = (TextView) findViewById(R.id.textView4);
+            final RadioButton r=(RadioButton)findViewById(R.id.radioButton);
+            final RadioButton r1=(RadioButton)findViewById(R.id.radioButton2);
+            Button b=(Button)findViewById(R.id.button5);
+
+            r.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    if(b) {
+                        r1.setChecked(false);
+                        data.setText(data_str_download);
+                    }
+                }
+            });
+
+            r1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    if (b) {
+                        r.setChecked(false);
+                        data.setText(data_str_upload);
+                    }
+                }
+            });
+
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                    clipboard.setText(data.getText());
+                }
+            });
+            data.setText(data_str_download);
+        } catch (Exception ex) {
+
+        }
+    }
+
+    public void displayDownloadStat(View v) {
+
     }
 }

@@ -2,6 +2,7 @@ package com.speedtest.model;
 
 import com.google.android.gms.maps.model.LatLng;
 
+
 import java.util.List;
 
 /**
@@ -18,9 +19,13 @@ public class DataModel {
     private LatLng latLng = new LatLng(0,0);
     private String phoneName = "";
     private String version = "";
+    private int strength = 0;
+    private String signalStrengthWifi="0";
+    private String signalStrengthGSM="0";
     private String operator = "";
+    private String geoJSON = "";
 
-    public static String tableHeader = "File name, File size, Download speed, Upload speed, Date, Time, Connection type, Latitude, Longitude, Phone name, Android version, Operator";
+    public static String tableHeader = "File name, File size, Download speed, Upload speed, Date, Time, Connection type, Latitude, Longitude, Phone name, Android version,GSM Strength,Wifi Strength, Operator, geoJSON";
 
     public DataModel() {}
 
@@ -52,26 +57,36 @@ public class DataModel {
     public void setPhoneName(String phoneName) {
         this.phoneName = phoneName;
     }
-    public void setVersion(String version) {
-        this.version = version;
-    }
+    public void setVersion(String version) {this.version = version;}
+
+
+    public void setSignalStrengthWifi(String signalStrengthWifi){this.signalStrengthWifi=signalStrengthWifi;}
+
+    public void setSignalStrengthGSM(String signalStrengthGSM){this.signalStrengthGSM=signalStrengthGSM;}
+
     public void setOperator(String operator) { this.operator = operator; }
+
+    public void setGeoJSON(String geoJSON) { this.geoJSON = geoJSON; }
+
 
     // Getter
     public String getFileName() { return this.fileName; }
-    public String getConnectionType() { return this.internetType; }
-    public String getOperator() { return this.operator; }
     public long getFileSize() { return this.fileSize; }
     public float getDownloadSpeed() { return this.downloadSpeed; }
     public float getUploadSpeed() { return this.uploadSpeed; }
+    public String getConnectionType() { return this.internetType; }
     public String getPhoneName() { return this.phoneName; }
     public String getVersion() { return this.version; }
+    public int getStrength() { return this.strength; }
+    public String getOperator() { return this.operator; }
     public LatLng getLocation() { return this.latLng; }
+
+    public String getGeoJSON() { return this.geoJSON; }
 
     @Override
     public String toString() {
         return fileName + "," + fileSize + "," + downloadSpeed + "," + uploadSpeed + "," + date + "," + time + "," + internetType + "," + latLng.latitude + ","
-                + latLng.longitude + "," + phoneName + "," + version + "," + operator;
+                + latLng.longitude + "," + phoneName + "," + version + "," +signalStrengthGSM+"," +signalStrengthWifi + "," + operator  + "," + geoJSON;
     }
 
     public static DataModel CalculateSpeedForParticularFile(String fileName, List<DataModel>dataModels) {

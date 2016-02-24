@@ -1,14 +1,21 @@
 package com.speedtest.services;
 
 import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.wifi.ScanResult;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Environment;
 import android.os.IBinder;
 import android.os.SystemClock;
-import android.util.Log;
+import android.telephony.PhoneStateListener;
+import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.speedtest.FileUtils.FileUtils;
@@ -29,8 +36,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by Admin on 1/7/16.
@@ -46,10 +58,16 @@ public class CheckSpeedService extends Service {
     public static final String REPEAT = "repeat";
     public static final String COMPLETE_SIMPLE_TASK = "complete_simple_task";
 
+    public static String wifiStrength="";
+    public static String gsmStrength="";
+
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("HH:mm:ss");
     private LatLng latLng;
     private ExecutorService executorService = null;
+
+    private JSONObject geoJSON;
+
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -76,6 +94,77 @@ public class CheckSpeedService extends Service {
         String[] files = intent.getStringArrayExtra(FILES);
         int repeat = intent.getIntExtra(CheckSpeedService.REPEAT, 0);
         latLng = new LatLng((double)intent.getFloatExtra("latitude",0), (double) intent.getFloatExtra("longitude",0));
+
+        MyPhoneStateListener MyListener = new MyPhoneStateListener();
+        TelephonyManager Tel = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        Tel.listen(MyListener, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
+
+
+        //wifi
+
+        registerReceiver(new BroadcastReceiver() {
+
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                try {
+                    final WifiManager wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+                    int state = wifi.getWifiState();
+                    if (state == WifiManager.WIFI_STATE_ENABLED) {
+                        List<ScanResult> results = wifi.getScanResults();
+
+                        for (ScanResult result : results) {
+                            if (result.BSSID.equals(wifi.getConnectionInfo().getBSSID())) {
+                                int level = WifiManager.calculateSignalLevel(wifi.getConnectionInfo().getRssi(),
+                                        result.level);
+                                int difference = level * 100 / result.level;
+                                int signalStrangth = 0;
+                                if (difference >= 100)
+                                    signalStrangth = 4;
+                                else if (difference >= 75)
+                                    signalStrangth = 3;
+                                else if (difference >= 50)
+                                    signalStrangth = 2;
+                                else if (difference >= 25)
+                                    signalStrangth = 1;
+                                wifiStrength= String.valueOf(signalStrangth);
+
+                            }
+
+                        }
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new IntentFilter(WifiManager.RSSI_CHANGED_ACTION));
+
+        try {
+
+            JSONArray arrayPoints = new JSONArray();
+            arrayPoints.put(latLng.longitude);
+            arrayPoints.put(latLng.latitude);
+
+            JSONObject typePoint = new JSONObject();
+            typePoint.put("type","Point");
+            typePoint.put("coordinates",(Object)arrayPoints);
+
+            JSONObject properties = new JSONObject();
+            properties.put("name","Location");
+
+            JSONObject typeFeature = new JSONObject();
+            typeFeature.put("type","Feature");
+            typeFeature.put("geometry",(Object)typePoint);
+            typeFeature.put("properties",(Object)properties);
+
+            this.geoJSON = typeFeature;
+
+            Log.i("info","  " + typeFeature.toString());
+            Log.i("info","  " + typePoint.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         executorService.execute(new CheckSpeedTask(files, repeat, startId));
 
         return START_NOT_STICKY;
@@ -101,12 +190,14 @@ public class CheckSpeedService extends Service {
             for (int i = 0; i < repeat * files.length; i++) {
                 dataModelsList.add(new DataModel());
             }
+
             String operator = " ";
             TelephonyManager  tm=(TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
             File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
             if(!tm.getNetworkOperatorName().isEmpty()){
                 operator = tm.getNetworkOperatorName();
             }
+
             if (!path.exists())
                 path.mkdirs();
 
@@ -125,8 +216,14 @@ public class CheckSpeedService extends Service {
                     dataModelsList.get(i * repeat + repeatDownload).setConnectionType(InternetConnectionType.getNetworkClass(getApplicationContext()));
                     dataModelsList.get(i * repeat + repeatDownload).setLocation(latLng);
                     dataModelsList.get(i * repeat + repeatDownload).setPhoneName(getDeviceName());
-                    dataModelsList.get(i * repeat + repeatDownload).setVersion(new String(Build.VERSION.RELEASE));
+                    dataModelsList.get(i * repeat + repeatDownload).setSignalStrengthWifi(wifiStrength);
+                    dataModelsList.get(i * repeat + repeatDownload).setSignalStrengthGSM(gsmStrength);
                     dataModelsList.get(i * repeat + repeatDownload).setOperator(operator);
+
+                    if (geoJSON != null) {
+                        dataModelsList.get(i * repeat + repeatDownload).setGeoJSON(geoJSON.toString());
+                    }
+
                     repeatDownload += 1;
                 }while (repeatDownload < repeat);
                 repeatDownload = 0;
@@ -312,4 +409,26 @@ public class CheckSpeedService extends Service {
         }
         return dataRate;
     }
+    private class MyPhoneStateListener extends PhoneStateListener
+    {
+        @Override
+        public void onSignalStrengthsChanged(SignalStrength signalStrength)
+        {
+            String level;
+            super.onSignalStrengthsChanged(signalStrength);
+            int asu=signalStrength.getGsmSignalStrength();
+            if (asu <= 2 || asu == 99)
+                level = "0";
+            else if (asu >= 12)
+                level = "4";
+            else if (asu >= 8)
+                level = "3";
+            else if (asu >= 5)
+                level = "2";
+            else
+                level = "1";
+            gsmStrength=level;
+        }
+
+    };
 }
