@@ -22,10 +22,6 @@ import com.speedtest.FileUtils.FileUtils;
 import com.speedtest.common.InternetConnectionType;
 import com.speedtest.model.DataModel;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -43,6 +39,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by Admin on 1/7/16.
@@ -67,6 +67,7 @@ public class CheckSpeedService extends Service {
     private ExecutorService executorService = null;
 
     private JSONObject geoJSON;
+
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -138,7 +139,6 @@ public class CheckSpeedService extends Service {
             }
         }, new IntentFilter(WifiManager.RSSI_CHANGED_ACTION));
 
-
         try {
 
             JSONArray arrayPoints = new JSONArray();
@@ -191,7 +191,13 @@ public class CheckSpeedService extends Service {
                 dataModelsList.add(new DataModel());
             }
 
+            String operator = " ";
+            TelephonyManager  tm=(TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
             File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+            if(!tm.getNetworkOperatorName().isEmpty()){
+                operator = tm.getNetworkOperatorName();
+            }
+
             if (!path.exists())
                 path.mkdirs();
 
@@ -212,6 +218,7 @@ public class CheckSpeedService extends Service {
                     dataModelsList.get(i * repeat + repeatDownload).setPhoneName(getDeviceName());
                     dataModelsList.get(i * repeat + repeatDownload).setSignalStrengthWifi(wifiStrength);
                     dataModelsList.get(i * repeat + repeatDownload).setSignalStrengthGSM(gsmStrength);
+                    dataModelsList.get(i * repeat + repeatDownload).setOperator(operator);
 
                     if (geoJSON != null) {
                         dataModelsList.get(i * repeat + repeatDownload).setGeoJSON(geoJSON.toString());

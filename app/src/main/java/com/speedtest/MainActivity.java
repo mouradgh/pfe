@@ -7,17 +7,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.telephony.PhoneStateListener;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-
-import android.telephony.SignalStrength;
-import android.widget.TextView;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.speedtest.services.CheckSpeedService;
@@ -35,7 +27,6 @@ public class MainActivity extends Activity {
 
 	private ProgressDialog dialog;
 	public static String[] files = new String[] {"img5.jpg", "img4.jpg", "img3.jpg","img2.jpg", "img1.jpg"};
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,9 +66,7 @@ public class MainActivity extends Activity {
 				startActivity(new Intent(MainActivity.this, SimpleRegressionActivity.class));
 			}
 		});
-
 	}
-
 
 	@Override
 	public void onStart() {
@@ -110,13 +99,6 @@ public class MainActivity extends Activity {
 	}
 
 
-	//Wifi strength
-	public void onReceive(WifiManager wifiManager) {
-		int numberOfLevels=5;
-		WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-		int level=WifiManager.calculateSignalLevel(wifiInfo.getRssi(), numberOfLevels);
-	}
-
 	
 	public void drawPlot(View v) {
 		Intent intent = new Intent(this, CheckSpeedService.class);
@@ -143,6 +125,11 @@ public class MainActivity extends Activity {
 	
 	public void viewTable(View v) {
 		Intent i = new Intent(this, TableView.class);
+		startActivity(i);
+	}
+
+	public void viewMap(View v) {
+		Intent i = new Intent(this, MapView.class);
 		startActivity(i);
 	}
 }
