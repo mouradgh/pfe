@@ -26,4 +26,4 @@ local.properties
 captures/
 
 # idea folder
-.idea/
+.idea/*
