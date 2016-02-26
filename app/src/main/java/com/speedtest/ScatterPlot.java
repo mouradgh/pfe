@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -34,6 +35,10 @@ import com.github.mikephil.charting.renderer.LineChartRenderer;
 
 import com.speedtest.FileUtils.FileUtils;
 import com.speedtest.model.DataModel;
+
+import org.apache.commons.math3.linear.Array2DRowRealMatrix;
+import org.apache.commons.math3.linear.RealMatrix;
+import org.apache.commons.math3.stat.regression.SimpleRegression;
 
 
 public class ScatterPlot extends Activity {
@@ -93,16 +98,55 @@ public class ScatterPlot extends Activity {
             ArrayList<Entry> line1 = new ArrayList<Entry>();
             ArrayList<Entry> line2 = new ArrayList<Entry>();
 
+            /**********Check for regression**************/
+            double[][] dataDownload = new double[dataModelList.size()][2];
+            double[][] dataUpload = new double[dataModelList.size()][2];
+
+            for (int i = 0; i < dataModelList.size() - 1; i++) {
+                Log.i("info", " model = " + dataModelList.get(i).toString());
+                dataDownload[i][0] = (double) dataModelList.get(i).getFileSize();
+                dataDownload[i][1] = (double) dataModelList.get(i).getDownloadSpeed();
+
+                dataUpload[i][0] = (double) dataModelList.get(i).getFileSize();
+                dataUpload[i][1] = (double) dataModelList.get(i).getUploadSpeed();
+            }
+
+            /*****Simple Regression******/
+            SimpleRegression downloadDataSimpleRegression = new SimpleRegression();
+            SimpleRegression uploadDataSimpleRegression = new SimpleRegression();
+            downloadDataSimpleRegression.addData(dataDownload);
+            uploadDataSimpleRegression.addData(dataUpload);
+
+            /*****Polynomial Regression****/
+            RealMatrix rmDown = new Array2DRowRealMatrix(dataDownload);
+            RealMatrix rmUp = new Array2DRowRealMatrix(dataUpload);
+
+            PolynomialRegression downloadDataPolynomialRegression = new PolynomialRegression(rmDown.getColumn(0), rmDown.getColumn(1), 2, "Download speed");
+            PolynomialRegression uploadDataPolynomialRegression = new PolynomialRegression(rmUp.getColumn(0), rmUp.getColumn(1), 2, "Upload speed");
+
             for (int i = 0; i < 5; i++) {
-                line1.add(new Entry(dataModels[i].getDownloadSpeed(), i));
-                //yVals1.add(new Entry(sp.getFloat("download"+(i+1), 0), i));
+                float point;
+                if(downloadDataSimpleRegression.getR() > downloadDataPolynomialRegression.R2()) {
+                    point = (float)downloadDataSimpleRegression.predict(dataModels[i].getFileSize());
+                }
+                else {
+                    point = (float)downloadDataPolynomialRegression.predict(dataModels[i].getFileSize());
+                }
+                line1.add(new Entry(point, i));
+
                 yVals1.add(new Entry(dataModels[i].getDownloadSpeed(), i));
             }
 
             for (int i = 0; i < 5; i++) {
-                line2.add(new Entry(dataModels[i].getUploadSpeed(), i));
-                //yVals2.add(new Entry(sp.getFloat("upload"+(i+1), 0), i));
-                //Entry entry = new Entry(dataModels[i].getUploadSpeed(),i);
+                float point;
+                if(downloadDataSimpleRegression.getR() > downloadDataPolynomialRegression.R2()) {
+                    point = (float)uploadDataSimpleRegression.predict(dataModels[i].getFileSize());
+                }
+                else {
+                    point = (float)uploadDataPolynomialRegression.predict(dataModels[i].getFileSize());
+                }
+                line2.add(new Entry(point, i));
+
                 yVals2.add(new Entry(dataModels[i].getUploadSpeed(), i));
             }
 
